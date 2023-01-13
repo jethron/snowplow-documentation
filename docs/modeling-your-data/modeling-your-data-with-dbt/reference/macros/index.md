@@ -56,11 +56,11 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
 
 </TabItem>
 </Tabs>
@@ -92,14 +92,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.type_timestamp
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 - [macro.snowplow_utils.return_base_new_event_limits](#macro.snowplow_utils.return_base_new_event_limits)
-- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
 - [macro.snowplow_utils.return_limits_from_model](#macro.snowplow_utils.return_limits_from_model)
+- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
+- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 
 </TabItem>
 </Tabs>
@@ -239,15 +243,26 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_field_alias](#macro.snowplow_utils.get_field_alias)
+- [macro.snowplow_utils.get_level_limit](#macro.snowplow_utils.get_level_limit)
+- [macro.snowplow_utils.get_columns_in_relation_by_column_prefix](#macro.snowplow_utils.get_columns_in_relation_by_column_prefix)
+- [macro.snowplow_utils.exclude_column_versions](#macro.snowplow_utils.exclude_column_versions)
+- [macro.snowplow_utils.flatten_fields](#macro.snowplow_utils.flatten_fields)
+- [macro.snowplow_utils.merge_fields_across_col_versions](#macro.snowplow_utils.merge_fields_across_col_versions)
+- [macro.snowplow_utils.get_matched_fields](#macro.snowplow_utils.get_matched_fields)
+- [macro.snowplow_utils.coalesce_field_paths](#macro.snowplow_utils.coalesce_field_paths)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.get_optional_fields](#macro.snowplow_utils.get_optional_fields)
-- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
-- [macro.snowplow_mobile.bigquery__get_device_user_id_path_sql](#macro.snowplow_mobile.bigquery__get_device_user_id_path_sql)
 - [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
 - [macro.snowplow_mobile.bigquery__get_session_id_path_sql](#macro.snowplow_mobile.bigquery__get_session_id_path_sql)
+- [macro.snowplow_utils.get_optional_fields](#macro.snowplow_utils.get_optional_fields)
+- [macro.snowplow_mobile.bigquery__get_device_user_id_path_sql](#macro.snowplow_mobile.bigquery__get_device_user_id_path_sql)
+- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 
 </TabItem>
 </Tabs>
@@ -312,16 +327,21 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.current_timestamp
+- macro.dbt.type_timestamp
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
+- [model.snowplow_mobile.snowplow_mobile_screen_views_this_run](#model.snowplow_mobile.snowplow_mobile_screen_views_this_run)
+- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
 - [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
 - [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
-- [model.snowplow_mobile.snowplow_mobile_screen_views_this_run](#model.snowplow_mobile.snowplow_mobile_screen_views_this_run)
 - [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -434,12 +454,16 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.flatten_fields](#macro.snowplow_utils.flatten_fields)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
 - [macro.snowplow_utils.flatten_fields](#macro.snowplow_utils.flatten_fields)
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
 
 </TabItem>
 </Tabs>
@@ -477,27 +501,27 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
-- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
-- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
 - [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
+- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
+- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle](#macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle)
-- [macro.snowplow_web.default__web_cluster_by_fields_users](#macro.snowplow_web.default__web_cluster_by_fields_users)
-- [macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle](#macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle)
 - [macro.snowplow_mobile.default__cluster_by_fields_app_errors](#macro.snowplow_mobile.default__cluster_by_fields_app_errors)
+- [macro.snowplow_web.default__web_cluster_by_fields_users](#macro.snowplow_web.default__web_cluster_by_fields_users)
 - [macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions](#macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions)
-- [macro.snowplow_mobile.default__mobile_cluster_by_fields_users](#macro.snowplow_mobile.default__mobile_cluster_by_fields_users)
-- [macro.snowplow_web.default__web_cluster_by_fields_consent](#macro.snowplow_web.default__web_cluster_by_fields_consent)
 - [macro.snowplow_web.default__web_cluster_by_fields_sessions](#macro.snowplow_web.default__web_cluster_by_fields_sessions)
 - [macro.snowplow_web.default__web_cluster_by_fields_page_views](#macro.snowplow_web.default__web_cluster_by_fields_page_views)
+- [macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle](#macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle)
+- [macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle](#macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle)
+- [macro.snowplow_web.default__web_cluster_by_fields_consent](#macro.snowplow_web.default__web_cluster_by_fields_consent)
 - [macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views](#macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views)
+- [macro.snowplow_mobile.default__mobile_cluster_by_fields_users](#macro.snowplow_mobile.default__mobile_cluster_by_fields_users)
 
 </TabItem>
 </Tabs>
@@ -642,9 +666,9 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -688,8 +712,8 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.get_optional_fields](#macro.snowplow_utils.get_optional_fields)
 - [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+- [macro.snowplow_utils.get_optional_fields](#macro.snowplow_utils.get_optional_fields)
 
 </TabItem>
 </Tabs>
@@ -744,13 +768,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.print_list](#macro.snowplow_utils.print_list)
+- macro.dbt.run_query
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
 
 </TabItem>
 </Tabs>
@@ -874,6 +903,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.throw_compiler_error](#macro.snowplow_utils.throw_compiler_error)
 
 
 #### Referenced By
@@ -1018,6 +1051,11 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+- [macro.snowplow_utils.get_field_alias](#macro.snowplow_utils.get_field_alias)
+
 </DbtDetails>
 
 ### Get Partition By {#macro.snowplow_utils.get_partition_by}
@@ -1052,21 +1090,21 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
+- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
 - [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
-- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
-- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
-- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
-- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 - [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
 - [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
+- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 
 </TabItem>
 </Tabs>
@@ -1112,12 +1150,16 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.timestamp_add](#macro.snowplow_utils.timestamp_add)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.default__quarantine_sessions](#macro.snowplow_utils.default__quarantine_sessions)
 - [macro.snowplow_utils.postgres__quarantine_sessions](#macro.snowplow_utils.postgres__quarantine_sessions)
+- [macro.snowplow_utils.default__quarantine_sessions](#macro.snowplow_utils.default__quarantine_sessions)
 
 </TabItem>
 </Tabs>
@@ -1198,13 +1240,20 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.cast_to_tstamp](#macro.snowplow_utils.cast_to_tstamp)
+- [macro.snowplow_utils.log_message](#macro.snowplow_utils.log_message)
+- [macro.snowplow_utils.timestamp_add](#macro.snowplow_utils.timestamp_add)
+- [macro.snowplow_utils.current_timestamp_in_utc](#macro.snowplow_utils.current_timestamp_in_utc)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
 
 </TabItem>
 </Tabs>
@@ -1281,6 +1330,11 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.run_query
+- macro.dbt_utils.get_tables_by_pattern_sql
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
@@ -1336,12 +1390,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.timestamp_add](#macro.snowplow_utils.timestamp_add)
+- macro.dbt.run_query
+- [macro.snowplow_utils.cast_to_tstamp](#macro.snowplow_utils.cast_to_tstamp)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 
 </TabItem>
 </Tabs>
@@ -1369,12 +1429,16 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.snowflake__get_snowplow_delete_insert_sql](#macro.snowplow_utils.snowflake__get_snowplow_delete_insert_sql)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.default__snowplow_delete_insert](#macro.snowplow_utils.default__snowplow_delete_insert)
 - [macro.snowplow_utils.snowflake__snowplow_delete_insert](#macro.snowplow_utils.snowflake__snowplow_delete_insert)
+- [macro.snowplow_utils.default__snowplow_delete_insert](#macro.snowplow_utils.default__snowplow_delete_insert)
 
 </TabItem>
 </Tabs>
@@ -1402,13 +1466,17 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.default__get_snowplow_merge_sql](#macro.snowplow_utils.default__get_snowplow_merge_sql)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
-- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
 - [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
+- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
+- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
 
 </TabItem>
 </Tabs>
@@ -1436,15 +1504,19 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.snowflake__get_snowplow_upsert_limits_sql](#macro.snowplow_utils.snowflake__get_snowplow_upsert_limits_sql)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
-- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
-- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
-- [macro.snowplow_utils.default__snowplow_delete_insert](#macro.snowplow_utils.default__snowplow_delete_insert)
 - [macro.snowplow_utils.snowflake__snowplow_delete_insert](#macro.snowplow_utils.snowflake__snowplow_delete_insert)
+- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
+- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
+- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
+- [macro.snowplow_utils.default__snowplow_delete_insert](#macro.snowplow_utils.default__snowplow_delete_insert)
 
 </TabItem>
 </Tabs>
@@ -1503,6 +1575,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.default__get_split_to_array](#macro.snowplow_utils.default__get_split_to_array)
 
 
 #### Referenced By
@@ -1644,6 +1720,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.default__get_string_agg](#macro.snowplow_utils.default__get_string_agg)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -1755,8 +1835,8 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_mobile.default__allow_refresh](#macro.snowplow_mobile.default__allow_refresh)
 - [macro.snowplow_normalize.default__allow_refresh](#macro.snowplow_normalize.default__allow_refresh)
+- [macro.snowplow_mobile.default__allow_refresh](#macro.snowplow_mobile.default__allow_refresh)
 - [macro.snowplow_web.default__allow_refresh](#macro.snowplow_web.default__allow_refresh)
 
 </TabItem>
@@ -1834,31 +1914,38 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_new_event_limits_table_relation](#macro.snowplow_utils.get_new_event_limits_table_relation)
+- [macro.snowplow_utils.get_incremental_manifest_table_relation](#macro.snowplow_utils.get_incremental_manifest_table_relation)
+- [macro.snowplow_utils.snowplow_is_incremental](#macro.snowplow_utils.snowplow_is_incremental)
+- macro.dbt.run_query
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
-- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
-- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
-- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
 - [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
+- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
-- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
 - [macro.snowplow_normalize.snowflake__users_table](#macro.snowplow_normalize.snowflake__users_table)
-- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 - [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
 - [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
+- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
+- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
+- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 
 </TabItem>
 </Tabs>
@@ -1899,13 +1986,17 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt_utils.pretty_log_format
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 - [macro.snowplow_utils.snowplow_delete_from_manifest](#macro.snowplow_utils.snowplow_delete_from_manifest)
 - [macro.snowplow_utils.print_run_limits](#macro.snowplow_utils.print_run_limits)
+- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 
 </TabItem>
 </Tabs>
@@ -1999,6 +2090,18 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- macro.dbt.should_full_refresh
+- macro.dbt.load_relation
+- macro.dbt.make_temp_relation
+- [macro.snowplow_utils.snowplow_validate_get_incremental_strategy](#macro.snowplow_utils.snowplow_validate_get_incremental_strategy)
+- macro.dbt.run_hooks
+- macro.dbt.create_table_as
+- [macro.snowplow_utils.snowplow_merge](#macro.snowplow_utils.snowplow_merge)
+- macro.dbt.statement
+- macro.dbt.persist_docs
+
 </DbtDetails>
 
 ### Materialization Snowplow Incremental Databricks {#macro.snowplow_utils.materialization_snowplow_incremental_databricks}
@@ -2082,6 +2185,19 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- macro.dbt.should_full_refresh
+- macro.dbt.load_relation
+- macro.dbt.make_temp_relation
+- [macro.snowplow_utils.snowplow_validate_get_incremental_strategy](#macro.snowplow_utils.snowplow_validate_get_incremental_strategy)
+- macro.dbt.run_hooks
+- macro.dbt.create_table_as
+- macro.dbt.run_query
+- [macro.snowplow_utils.snowplow_merge](#macro.snowplow_utils.snowplow_merge)
+- macro.dbt.statement
+- macro.dbt.persist_docs
 
 </DbtDetails>
 
@@ -2171,6 +2287,18 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- macro.dbt.load_relation
+- macro.dbt.make_temp_relation
+- macro.dbt.run_hooks
+- macro.dbt.create_table_as
+- macro.dbt.run_query
+- [macro.snowplow_utils.snowplow_delete_insert](#macro.snowplow_utils.snowplow_delete_insert)
+- macro.dbt.statement
+- macro.dbt.should_full_refresh
+- macro.dbt.create_indexes
 
 </DbtDetails>
 
@@ -2262,6 +2390,21 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.set_query_tag](#macro.snowplow_utils.set_query_tag)
+- macro.dbt.should_full_refresh
+- macro.dbt.load_relation
+- macro.dbt.make_temp_relation
+- [macro.snowplow_utils.snowplow_validate_get_incremental_strategy](#macro.snowplow_utils.snowplow_validate_get_incremental_strategy)
+- macro.dbt.run_hooks
+- macro.dbt.create_table_as
+- macro.dbt.run_query
+- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
+- macro.dbt.statement
+- macro.dbt.persist_docs
+- macro.dbt_snowflake.unset_query_tag
+
 </DbtDetails>
 
 ### Materialization Snowplow Incremental Spark {#macro.snowplow_utils.materialization_snowplow_incremental_spark}
@@ -2345,6 +2488,19 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- macro.dbt.should_full_refresh
+- macro.dbt.load_relation
+- macro.dbt.make_temp_relation
+- [macro.snowplow_utils.snowplow_validate_get_incremental_strategy](#macro.snowplow_utils.snowplow_validate_get_incremental_strategy)
+- macro.dbt.run_hooks
+- macro.dbt.create_table_as
+- macro.dbt.run_query
+- [macro.snowplow_utils.snowplow_merge](#macro.snowplow_utils.snowplow_merge)
+- macro.dbt.statement
+- macro.dbt.persist_docs
 
 </DbtDetails>
 
@@ -2492,6 +2648,11 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.get_schemas_by_pattern](#macro.snowplow_utils.get_schemas_by_pattern)
+- macro.dbt.run_query
+
 </DbtDetails>
 
 ### Print List {#macro.snowplow_utils.print_list}
@@ -2568,13 +2729,19 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.run_query
+- [macro.snowplow_utils.tstamp_to_str](#macro.snowplow_utils.tstamp_to_str)
+- [macro.snowplow_utils.log_message](#macro.snowplow_utils.log_message)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
 
 </TabItem>
 </Tabs>
@@ -2653,6 +2820,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_quarantine_sql](#macro.snowplow_utils.get_quarantine_sql)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -2711,15 +2882,21 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.timestamp_add](#macro.snowplow_utils.timestamp_add)
+- macro.dbt.run_query
+- [macro.snowplow_utils.cast_to_tstamp](#macro.snowplow_utils.cast_to_tstamp)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
-- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
 
 </TabItem>
 </Tabs>
@@ -2768,13 +2945,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.run_query
+- [macro.snowplow_utils.cast_to_tstamp](#macro.snowplow_utils.cast_to_tstamp)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
 - [model.snowplow_mobile.snowplow_mobile_base_session_context](#model.snowplow_mobile.snowplow_mobile_base_session_context)
 - [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
+- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
 
 </TabItem>
 </Tabs>
@@ -2825,50 +3007,54 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.snowflake__set_query_tag](#macro.snowplow_utils.snowflake__set_query_tag)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
-- [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
-- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
-- [model.snowplow_web.snowplow_web_sessions_lasts](#model.snowplow_web.snowplow_web_sessions_lasts)
-- [model.snowplow_web.snowplow_web_pv_scroll_depth](#model.snowplow_web.snowplow_web_pv_scroll_depth)
-- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
-- [model.snowplow_mobile.snowplow_mobile_users_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_users_sessions_this_run)
-- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
-- [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
-- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
-- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
-- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
-- [model.snowplow_mobile.snowplow_mobile_users_lasts](#model.snowplow_mobile.snowplow_mobile_users_lasts)
-- [model.snowplow_web.snowplow_web_sessions_aggs](#model.snowplow_web.snowplow_web_sessions_aggs)
-- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
-- [model.snowplow_web.snowplow_web_users_lasts](#model.snowplow_web.snowplow_web_users_lasts)
-- [model.snowplow_web.snowplow_web_users_sessions_this_run](#model.snowplow_web.snowplow_web_users_sessions_this_run)
-- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
-- [model.snowplow_media_player.snowplow_media_player_pivot_base](#model.snowplow_media_player.snowplow_media_player_pivot_base)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
-- [model.snowplow_media_player.snowplow_media_player_plays_by_pageview](#model.snowplow_media_player.snowplow_media_player_plays_by_pageview)
-- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
-- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
-- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
-- [model.snowplow_web.snowplow_web_pv_engaged_time](#model.snowplow_web.snowplow_web_pv_engaged_time)
-- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
-- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
-- [model.snowplow_mobile.snowplow_mobile_users_this_run](#model.snowplow_mobile.snowplow_mobile_users_this_run)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
+- [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
+- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
 - [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
+- [model.snowplow_web.snowplow_web_sessions_aggs](#model.snowplow_web.snowplow_web_sessions_aggs)
+- [model.snowplow_web.snowplow_web_users_lasts](#model.snowplow_web.snowplow_web_users_lasts)
+- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
+- [model.snowplow_media_player.snowplow_media_player_pivot_base](#model.snowplow_media_player.snowplow_media_player_pivot_base)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
+- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
+- [model.snowplow_mobile.snowplow_mobile_users_this_run](#model.snowplow_mobile.snowplow_mobile_users_this_run)
+- [model.snowplow_media_player.snowplow_media_player_plays_by_pageview](#model.snowplow_media_player.snowplow_media_player_plays_by_pageview)
+- [model.snowplow_web.snowplow_web_pv_scroll_depth](#model.snowplow_web.snowplow_web_pv_scroll_depth)
+- [model.snowplow_mobile.snowplow_mobile_users_lasts](#model.snowplow_mobile.snowplow_mobile_users_lasts)
+- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
+- [model.snowplow_web.snowplow_web_pv_engaged_time](#model.snowplow_web.snowplow_web_pv_engaged_time)
+- [model.snowplow_web.snowplow_web_users_sessions_this_run](#model.snowplow_web.snowplow_web_users_sessions_this_run)
 - [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 - [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
+- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_mobile.snowplow_mobile_users_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_users_sessions_this_run)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_web.snowplow_web_sessions_lasts](#model.snowplow_web.snowplow_web_sessions_lasts)
+- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
+- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
+- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -2955,6 +3141,14 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt_utils.log_info
+- macro.dbt_utils.get_column_values
+- [macro.snowplow_utils.print_list](#macro.snowplow_utils.print_list)
+- macro.dbt.run_query
+- [macro.snowplow_utils.log_message](#macro.snowplow_utils.log_message)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
@@ -2986,6 +3180,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowflake__snowplow_delete_insert](#macro.snowplow_utils.snowflake__snowplow_delete_insert)
 
 
 #### Referenced By
@@ -3030,6 +3228,13 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.get_enabled_snowplow_models](#macro.snowplow_utils.get_enabled_snowplow_models)
+- [macro.snowplow_utils.get_successful_models](#macro.snowplow_utils.get_successful_models)
+- [macro.snowplow_utils.get_incremental_manifest_table_relation](#macro.snowplow_utils.get_incremental_manifest_table_relation)
+- [macro.snowplow_utils.update_incremental_manifest_table](#macro.snowplow_utils.update_incremental_manifest_table)
+
 </DbtDetails>
 
 ### Snowplow Is Incremental {#macro.snowplow_utils.snowplow_is_incremental}
@@ -3063,12 +3268,16 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.should_full_refresh
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -3101,14 +3310,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_bigquery](#macro.snowplow_utils.materialization_snowplow_incremental_bigquery)
-- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
+- [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
+- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
 
 </TabItem>
 </Tabs>
@@ -3136,6 +3349,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowplow_delete_from_manifest](#macro.snowplow_utils.snowplow_delete_from_manifest)
 
 </DbtDetails>
 
@@ -3165,6 +3382,11 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowplow_merge](#macro.snowplow_utils.snowplow_merge)
+- [macro.snowplow_utils.snowplow_delete_insert](#macro.snowplow_utils.snowplow_delete_insert)
 
 
 #### Referenced By
@@ -3199,14 +3421,18 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.snowflake__snowplow_validate_get_incremental_strategy](#macro.snowplow_utils.snowflake__snowplow_validate_get_incremental_strategy)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_bigquery](#macro.snowplow_utils.materialization_snowplow_incremental_bigquery)
-- [macro.snowplow_utils.materialization_snowplow_incremental_snowflake](#macro.snowplow_utils.materialization_snowplow_incremental_snowflake)
+- [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
+- [macro.snowplow_utils.materialization_snowplow_incremental_snowflake](#macro.snowplow_utils.materialization_snowplow_incremental_snowflake)
 
 </TabItem>
 </Tabs>
@@ -3234,6 +3460,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowplow_delete_from_manifest](#macro.snowplow_utils.snowplow_delete_from_manifest)
 
 </DbtDetails>
 
@@ -3330,23 +3560,27 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.dateadd
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 - [macro.snowplow_utils.return_base_new_event_limits](#macro.snowplow_utils.return_base_new_event_limits)
-- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
 - [macro.snowplow_utils.get_quarantine_sql](#macro.snowplow_utils.get_quarantine_sql)
+- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
+- [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
 
 </TabItem>
 </Tabs>
@@ -3395,6 +3629,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- macro.dbt.datediff
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -3429,6 +3667,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowflake__to_unixtstamp](#macro.snowplow_utils.snowflake__to_unixtstamp)
 
 
 #### Referenced By
@@ -3535,6 +3777,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.snowflake__type_max_string](#macro.snowplow_utils.snowflake__type_max_string)
+
 </DbtDetails>
 
 ### Type String {#macro.snowplow_utils.type_string}
@@ -3584,16 +3830,20 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.default__type_string](#macro.snowplow_utils.default__type_string)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
 - [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
-- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
-- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
-- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
 - [model.snowplow_normalize.snowplow_normalize_incremental_manifest](#model.snowplow_normalize.snowplow_normalize_incremental_manifest)
+- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
+- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
 - [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
+- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
 
 </TabItem>
 </Tabs>
@@ -3673,6 +3923,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- macro.dbt.type_int
 
 
 #### Referenced By
@@ -3794,6 +4048,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.default__update_incremental_manifest_table](#macro.snowplow_utils.default__update_incremental_manifest_table)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
@@ -3828,6 +4086,10 @@ This macro does not currently have a description.
 ```
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.snowplow_delete_from_manifest](#macro.snowplow_utils.snowplow_delete_from_manifest)
 
 </DbtDetails>
 
@@ -3874,13 +4136,17 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_value_by_target](#macro.snowplow_utils.get_value_by_target)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
 - [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
 - [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
 
 </TabItem>
 </Tabs>
@@ -3955,12 +4221,16 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_web.snowflake__filter_bots](#macro.snowplow_web.snowflake__filter_bots)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
 - [model.snowplow_web.snowplow_web_page_view_events](#model.snowplow_web.snowplow_web_page_view_events)
+- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
 
 </TabItem>
 </Tabs>
@@ -4127,6 +4397,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
+
 </DbtDetails>
 
 ### Web Cluster By Fields Page Views {#macro.snowplow_web.web_cluster_by_fields_page_views}
@@ -4166,6 +4440,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
 
 
 #### Referenced By
@@ -4217,6 +4495,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -4266,6 +4548,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -4313,6 +4599,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
 
 
 #### Referenced By
@@ -4451,6 +4741,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_value_by_target](#macro.snowplow_utils.get_value_by_target)
 
 
 #### Referenced By
@@ -4598,6 +4892,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_mobile.default__bool_or](#macro.snowplow_mobile.default__bool_or)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -4645,6 +4943,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
 
 </DbtDetails>
 
@@ -4778,6 +5080,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+
 </DbtDetails>
 
 ### Get Session Id Path Sql {#macro.snowplow_mobile.get_session_id_path_sql}
@@ -4874,6 +5180,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+
 </DbtDetails>
 
 ### Mobile Cluster By Fields Screen Views {#macro.snowplow_mobile.mobile_cluster_by_fields_screen_views}
@@ -4913,6 +5223,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
 
 
 #### Referenced By
@@ -4964,6 +5278,10 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
@@ -5012,6 +5330,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
+
 </DbtDetails>
 
 ### Mobile Cluster By Fields Users {#macro.snowplow_mobile.mobile_cluster_by_fields_users}
@@ -5051,6 +5373,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_cluster_by](#macro.snowplow_utils.get_cluster_by)
 
 
 #### Referenced By
@@ -5279,6 +5605,10 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_utils.snowplow_delete_from_manifest](#macro.snowplow_utils.snowplow_delete_from_manifest)
+
 </DbtDetails>
 
 
@@ -5379,6 +5709,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_utils.get_value_by_target](#macro.snowplow_utils.get_value_by_target)
 
 
 #### Referenced By
@@ -5664,6 +5998,12 @@ where
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+- [macro.snowplow_normalize.snakeify_case](#macro.snowplow_normalize.snakeify_case)
+- [macro.snowplow_utils.is_run_with_new_events](#macro.snowplow_utils.is_run_with_new_events)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
@@ -5719,17 +6059,21 @@ Take a string in camel/pascal case and make it snakecase
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_normalize.default__snakeify_case](#macro.snowplow_normalize.default__snakeify_case)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
-- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
 - [macro.snowplow_normalize.snowflake__users_table](#macro.snowplow_normalize.snowflake__users_table)
-- [macro.snowplow_normalize_integration_tests.default__test_snakeify_case](#macro.snowplow_normalize_integration_tests.default__test_snakeify_case)
-- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 - [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
 - [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
+- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
+- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
+- [macro.snowplow_normalize_integration_tests.default__test_snakeify_case](#macro.snowplow_normalize_integration_tests.default__test_snakeify_case)
+- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 
 </TabItem>
 </Tabs>
@@ -6001,13 +6345,19 @@ where
 </DbtDetails>
 
 
+#### Depends On
+- [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+- [macro.snowplow_normalize.snakeify_case](#macro.snowplow_normalize.snakeify_case)
+- [macro.snowplow_utils.is_run_with_new_events](#macro.snowplow_utils.is_run_with_new_events)
+
+
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_normalize_integration_tests.snowflake__test_users_table](#macro.snowplow_normalize_integration_tests.snowflake__test_users_table)
 - [macro.snowplow_normalize_integration_tests.bigquery__test_users_table](#macro.snowplow_normalize_integration_tests.bigquery__test_users_table)
 - [macro.snowplow_normalize_integration_tests.databricks__test_users_table](#macro.snowplow_normalize_integration_tests.databricks__test_users_table)
+- [macro.snowplow_normalize_integration_tests.snowflake__test_users_table](#macro.snowplow_normalize_integration_tests.snowflake__test_users_table)
 
 </TabItem>
 </Tabs>
@@ -6178,6 +6528,11 @@ This macro does not currently have a description.
 
 </DbtDetails>
 
+
+#### Depends On
+- [macro.snowplow_normalize.normalize_events](#macro.snowplow_normalize.normalize_events)
+- macro.dbt_unittest.assert_dict_equals
+
 </DbtDetails>
 
 ### Test Snakeify Case {#macro.snowplow_normalize_integration_tests.test_snakeify_case}
@@ -6245,6 +6600,11 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- [macro.snowplow_normalize.snakeify_case](#macro.snowplow_normalize.snakeify_case)
+- macro.dbt_unittest.assert_equals
 
 </DbtDetails>
 
@@ -6398,5 +6758,10 @@ This macro does not currently have a description.
 </Tabs>
 
 </DbtDetails>
+
+
+#### Depends On
+- macro.dbt_unittest.assert_equals
+- [macro.snowplow_normalize.users_table](#macro.snowplow_normalize.users_table)
 
 </DbtDetails>
