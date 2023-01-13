@@ -8,6 +8,10 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
+
+export function DbtDetails(props) {
+return <div className="dbt"><details>{props.children}</details></div>
+}
 ```
 
 :::caution
@@ -18,7 +22,7 @@ This page is auto-generated from our dbt packages, some information may be incom
 ## Snowplow Utils
 ### App Id Filter {#macro.snowplow_utils.app_id_filter}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/app_id_filter.sql</code>
 </summary>
 
@@ -26,7 +30,7 @@ This page is auto-generated from our dbt packages, some information may be incom
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -45,26 +49,26 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
-- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 - [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Cast To Tstamp {#macro.snowplow_utils.cast_to_tstamp}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/timestamp_functions.sql</code>
 </summary>
 
@@ -72,7 +76,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -85,25 +89,25 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.return_limits_from_model](#macro.snowplow_utils.return_limits_from_model)
 - [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
-- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
 - [macro.snowplow_utils.return_base_new_event_limits](#macro.snowplow_utils.return_base_new_event_limits)
+- [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
+- [macro.snowplow_utils.return_limits_from_model](#macro.snowplow_utils.return_limits_from_model)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Coalesce Field Paths {#macro.snowplow_utils.coalesce_field_paths}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/coalesce_field_paths.sql</code>
 </summary>
 
@@ -111,7 +115,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -130,7 +134,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -141,11 +145,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Combine Column Versions {#macro.snowplow_utils.combine_column_versions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/combine_column_versions.sql</code>
 </summary>
 
@@ -153,7 +157,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -232,26 +236,26 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_mobile.bigquery__get_device_user_id_path_sql](#macro.snowplow_mobile.bigquery__get_device_user_id_path_sql)
-- [macro.snowplow_mobile.bigquery__get_session_id_path_sql](#macro.snowplow_mobile.bigquery__get_session_id_path_sql)
 - [macro.snowplow_utils.get_optional_fields](#macro.snowplow_utils.get_optional_fields)
-- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
 - [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
+- [macro.snowplow_mobile.bigquery__get_device_user_id_path_sql](#macro.snowplow_mobile.bigquery__get_device_user_id_path_sql)
+- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
+- [macro.snowplow_mobile.bigquery__get_session_id_path_sql](#macro.snowplow_mobile.bigquery__get_session_id_path_sql)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Current Timestamp In Utc {#macro.snowplow_utils.current_timestamp_in_utc}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/timestamp_functions.sql</code>
 </summary>
 
@@ -259,7 +263,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -305,18 +309,18 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_mobile.snowplow_mobile_screen_views_this_run](#model.snowplow_mobile.snowplow_mobile_screen_views_this_run)
 - [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
 - [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
 - [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
+- [model.snowplow_mobile.snowplow_mobile_screen_views_this_run](#model.snowplow_mobile.snowplow_mobile_screen_views_this_run)
 - [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 
 </TabItem>
@@ -326,11 +330,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Exclude Column Versions {#macro.snowplow_utils.exclude_column_versions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/exclude_column_versions.sql</code>
 </summary>
 
@@ -338,7 +342,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -356,7 +360,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -367,11 +371,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Flatten Fields {#macro.snowplow_utils.flatten_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/flatten_fields.sql</code>
 </summary>
 
@@ -379,7 +383,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -427,23 +431,23 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.flatten_fields](#macro.snowplow_utils.flatten_fields)
 - [macro.snowplow_utils.combine_column_versions](#macro.snowplow_utils.combine_column_versions)
+- [macro.snowplow_utils.flatten_fields](#macro.snowplow_utils.flatten_fields)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Cluster By {#macro.snowplow_utils.get_cluster_by}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/get_cluster_by.sql</code>
 </summary>
 
@@ -451,7 +455,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -466,42 +470,42 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
 - [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
 - [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
 - [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
 - [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
+- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_web.default__web_cluster_by_fields_sessions](#macro.snowplow_web.default__web_cluster_by_fields_sessions)
-- [macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle](#macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle)
-- [macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views](#macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views)
-- [macro.snowplow_web.default__web_cluster_by_fields_page_views](#macro.snowplow_web.default__web_cluster_by_fields_page_views)
-- [macro.snowplow_mobile.default__cluster_by_fields_app_errors](#macro.snowplow_mobile.default__cluster_by_fields_app_errors)
 - [macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle](#macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions_lifecycle)
+- [macro.snowplow_web.default__web_cluster_by_fields_users](#macro.snowplow_web.default__web_cluster_by_fields_users)
+- [macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle](#macro.snowplow_web.default__web_cluster_by_fields_sessions_lifecycle)
+- [macro.snowplow_mobile.default__cluster_by_fields_app_errors](#macro.snowplow_mobile.default__cluster_by_fields_app_errors)
 - [macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions](#macro.snowplow_mobile.default__mobile_cluster_by_fields_sessions)
 - [macro.snowplow_mobile.default__mobile_cluster_by_fields_users](#macro.snowplow_mobile.default__mobile_cluster_by_fields_users)
 - [macro.snowplow_web.default__web_cluster_by_fields_consent](#macro.snowplow_web.default__web_cluster_by_fields_consent)
-- [macro.snowplow_web.default__web_cluster_by_fields_users](#macro.snowplow_web.default__web_cluster_by_fields_users)
+- [macro.snowplow_web.default__web_cluster_by_fields_sessions](#macro.snowplow_web.default__web_cluster_by_fields_sessions)
+- [macro.snowplow_web.default__web_cluster_by_fields_page_views](#macro.snowplow_web.default__web_cluster_by_fields_page_views)
+- [macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views](#macro.snowplow_mobile.default__mobile_cluster_by_fields_screen_views)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Columns In Relation By Column Prefix {#macro.snowplow_utils.get_columns_in_relation_by_column_prefix}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/get_columns_in_relation_by_column_prefix.sql</code>
 </summary>
 
@@ -509,7 +513,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -543,7 +547,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -554,11 +558,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Enabled Snowplow Models {#macro.snowplow_utils.get_enabled_snowplow_models}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_enabled_snowplow_models.sql</code>
 </summary>
 
@@ -566,7 +570,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -631,15 +635,15 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
 
 </TabItem>
@@ -649,11 +653,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Field Alias {#macro.snowplow_utils.get_field_alias}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/get_field_alias.sql</code>
 </summary>
 
@@ -661,7 +665,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -677,7 +681,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -689,11 +693,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Incremental Manifest Status {#macro.snowplow_utils.get_incremental_manifest_status}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_incremental_manifest_status.sql</code>
 </summary>
 
@@ -701,7 +705,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -737,24 +741,24 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Incremental Manifest Table Relation {#macro.snowplow_utils.get_incremental_manifest_table_relation}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_incremental_manifest_table_relation.sql</code>
 </summary>
 
@@ -762,7 +766,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -775,23 +779,23 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.is_run_with_new_events](#macro.snowplow_utils.is_run_with_new_events)
 - [macro.snowplow_utils.snowplow_incremental_post_hook](#macro.snowplow_utils.snowplow_incremental_post_hook)
+- [macro.snowplow_utils.is_run_with_new_events](#macro.snowplow_utils.is_run_with_new_events)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Level Limit {#macro.snowplow_utils.get_level_limit}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/get_level_limit.sql</code>
 </summary>
 
@@ -799,7 +803,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -869,7 +873,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -880,11 +884,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Matched Fields {#macro.snowplow_utils.get_matched_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/get_matched_fields.sql</code>
 </summary>
 
@@ -892,7 +896,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -921,7 +925,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -932,11 +936,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get New Event Limits Table Relation {#macro.snowplow_utils.get_new_event_limits_table_relation}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_new_event_limits_table_relation.sql</code>
 </summary>
 
@@ -944,7 +948,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -957,7 +961,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -968,11 +972,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Optional Fields {#macro.snowplow_utils.get_optional_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/get_optional_fields.sql</code>
 </summary>
 
@@ -980,7 +984,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1012,13 +1016,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Get Partition By {#macro.snowplow_utils.get_partition_by}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/get_partition_by.sql</code>
 </summary>
 
@@ -1026,7 +1030,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1041,36 +1045,36 @@ This macro does not currently have a description.
 {%- endmacro -%}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
-- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
-- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
-- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 - [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
+- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
 - [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
-- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
-- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
 - [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
+- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
+- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Quarantine Sql {#macro.snowplow_utils.get_quarantine_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/quarantine_sessions.sql</code>
 </summary>
 
@@ -1078,7 +1082,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1105,23 +1109,23 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.postgres__quarantine_sessions](#macro.snowplow_utils.postgres__quarantine_sessions)
 - [macro.snowplow_utils.default__quarantine_sessions](#macro.snowplow_utils.default__quarantine_sessions)
+- [macro.snowplow_utils.postgres__quarantine_sessions](#macro.snowplow_utils.postgres__quarantine_sessions)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Run Limits {#macro.snowplow_utils.get_run_limits}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_run_limits.sql</code>
 </summary>
 
@@ -1129,7 +1133,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1191,24 +1195,24 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Schemas By Pattern {#macro.snowplow_utils.get_schemas_by_pattern}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/get_schemas_by_pattern.sql</code>
 </summary>
 
@@ -1216,7 +1220,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -1274,7 +1278,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1285,11 +1289,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Session Lookback Limit {#macro.snowplow_utils.get_session_lookback_limit}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_session_lookback_limit.sql</code>
 </summary>
 
@@ -1297,7 +1301,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1329,23 +1333,23 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Snowplow Delete Insert Sql {#macro.snowplow_utils.get_snowplow_delete_insert_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/get_snowplow_delete_insert_sql.sql</code>
 </summary>
 
@@ -1353,7 +1357,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1362,7 +1366,7 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1374,11 +1378,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Snowplow Merge Sql {#macro.snowplow_utils.get_snowplow_merge_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/get_snowplow_merge_sql.sql</code>
 </summary>
 
@@ -1386,7 +1390,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1395,24 +1399,24 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
-- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
 - [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
+- [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
+- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Snowplow Upsert Limits Sql {#macro.snowplow_utils.get_snowplow_upsert_limits_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/get_snowplow_upsert_limits_sql.sql</code>
 </summary>
 
@@ -1420,7 +1424,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1429,26 +1433,26 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
+- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
 - [macro.snowplow_utils.default__snowplow_merge](#macro.snowplow_utils.default__snowplow_merge)
+- [macro.snowplow_utils.databricks__snowplow_merge](#macro.snowplow_utils.databricks__snowplow_merge)
 - [macro.snowplow_utils.default__snowplow_delete_insert](#macro.snowplow_utils.default__snowplow_delete_insert)
 - [macro.snowplow_utils.snowflake__snowplow_delete_insert](#macro.snowplow_utils.snowflake__snowplow_delete_insert)
-- [macro.snowplow_utils.snowflake__snowplow_merge](#macro.snowplow_utils.snowflake__snowplow_merge)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Split To Array {#macro.snowplow_utils.get_split_to_array}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/get_split_to_array.sql</code>
 </summary>
 
@@ -1456,7 +1460,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -1498,7 +1502,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1509,11 +1513,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get String Agg {#macro.snowplow_utils.get_string_agg}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/get_string_agg.sql</code>
 </summary>
 
@@ -1521,7 +1525,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -1637,7 +1641,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1648,11 +1652,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Successful Models {#macro.snowplow_utils.get_successful_models}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_successful_models.sql</code>
 </summary>
 
@@ -1660,7 +1664,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1704,7 +1708,7 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1715,11 +1719,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Get Value By Target {#macro.snowplow_utils.get_value_by_target}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/get_value_by_target.sql</code>
 </summary>
 
@@ -1727,7 +1731,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1744,24 +1748,24 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_web.default__allow_refresh](#macro.snowplow_web.default__allow_refresh)
-- [macro.snowplow_normalize.default__allow_refresh](#macro.snowplow_normalize.default__allow_refresh)
 - [macro.snowplow_mobile.default__allow_refresh](#macro.snowplow_mobile.default__allow_refresh)
+- [macro.snowplow_normalize.default__allow_refresh](#macro.snowplow_normalize.default__allow_refresh)
+- [macro.snowplow_web.default__allow_refresh](#macro.snowplow_web.default__allow_refresh)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Is Run With New Events {#macro.snowplow_utils.is_run_with_new_events}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/is_run_with_new_events.sql</code>
 </summary>
 
@@ -1769,7 +1773,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1827,42 +1831,42 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
-- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
 - [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
-- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
 - [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
 - [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
+- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
-- [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
-- [macro.snowplow_normalize.snowflake__users_table](#macro.snowplow_normalize.snowflake__users_table)
-- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
-- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
 - [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
+- [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
+- [macro.snowplow_normalize.snowflake__users_table](#macro.snowplow_normalize.snowflake__users_table)
+- [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
+- [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
+- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Log Message {#macro.snowplow_utils.log_message}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/log_message.sql</code>
 </summary>
 
@@ -1870,7 +1874,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -1892,7 +1896,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -1905,11 +1909,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Materialization Snowplow Incremental Bigquery {#macro.snowplow_utils.materialization_snowplow_incremental_bigquery}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/bigquery/snowplow_incremental.sql</code>
 </summary>
 
@@ -1917,7 +1921,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -1993,13 +1997,13 @@ This macro does not currently have a description.
 {%- endmaterialization %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Materialization Snowplow Incremental Databricks {#macro.snowplow_utils.materialization_snowplow_incremental_databricks}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/databricks/snowplow_incremental.sql</code>
 </summary>
 
@@ -2007,7 +2011,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2077,13 +2081,13 @@ This macro does not currently have a description.
 {%- endmaterialization %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Materialization Snowplow Incremental Default {#macro.snowplow_utils.materialization_snowplow_incremental_default}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/default/snowplow_incremental.sql</code>
 </summary>
 
@@ -2091,7 +2095,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2166,13 +2170,13 @@ This macro does not currently have a description.
 {%- endmaterialization %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Materialization Snowplow Incremental Snowflake {#macro.snowplow_utils.materialization_snowplow_incremental_snowflake}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/snowflake/snowplow_incremental.sql</code>
 </summary>
 
@@ -2180,7 +2184,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2256,13 +2260,13 @@ This macro does not currently have a description.
 {%- endmaterialization %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Materialization Snowplow Incremental Spark {#macro.snowplow_utils.materialization_snowplow_incremental_spark}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/spark/snowplow_incremental.sql</code>
 </summary>
 
@@ -2270,7 +2274,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2340,13 +2344,13 @@ This macro does not currently have a description.
 {%- endmaterialization %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Merge Fields Across Col Versions {#macro.snowplow_utils.merge_fields_across_col_versions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/bigquery/combine_column_versions/merge_fields_across_col_versions.sql</code>
 </summary>
 
@@ -2354,7 +2358,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2392,7 +2396,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -2403,11 +2407,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### N Timedeltas Ago {#macro.snowplow_utils.n_timedeltas_ago}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/n_timedeltas_ago.sql</code>
 </summary>
 
@@ -2415,7 +2419,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2430,13 +2434,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Post Ci Cleanup {#macro.snowplow_utils.post_ci_cleanup}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/post_ci_cleanup.sql</code>
 </summary>
 
@@ -2444,7 +2448,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2486,13 +2490,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Print List {#macro.snowplow_utils.print_list}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/print_list.sql</code>
 </summary>
 
@@ -2500,7 +2504,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2511,7 +2515,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -2523,11 +2527,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Print Run Limits {#macro.snowplow_utils.print_run_limits}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/get_incremental_manifest_status.sql</code>
 </summary>
 
@@ -2535,7 +2539,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2561,24 +2565,24 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
 - [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Quarantine Sessions {#macro.snowplow_utils.quarantine_sessions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/quarantine_sessions.sql</code>
 </summary>
 
@@ -2586,7 +2590,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -2646,7 +2650,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -2657,11 +2661,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Return Base New Event Limits {#macro.snowplow_utils.return_base_new_event_limits}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/return_base_new_event_limits.sql</code>
 </summary>
 
@@ -2669,7 +2673,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2704,26 +2708,26 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
-- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
 - [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
+- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Return Limits From Model {#macro.snowplow_utils.return_limits_from_model}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/return_limits_from_model.sql</code>
 </summary>
 
@@ -2731,7 +2735,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2761,24 +2765,24 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_session_context](#model.snowplow_mobile.snowplow_mobile_base_session_context)
 - [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_session_context](#model.snowplow_mobile.snowplow_mobile_base_session_context)
+- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Set Query Tag {#macro.snowplow_utils.set_query_tag}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/set_query_tag.sql</code>
 </summary>
 
@@ -2786,7 +2790,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -2818,53 +2822,53 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_users_this_run](#model.snowplow_mobile.snowplow_mobile_users_this_run)
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
+- [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
+- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
+- [model.snowplow_web.snowplow_web_sessions_lasts](#model.snowplow_web.snowplow_web_sessions_lasts)
+- [model.snowplow_web.snowplow_web_pv_scroll_depth](#model.snowplow_web.snowplow_web_pv_scroll_depth)
+- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
+- [model.snowplow_mobile.snowplow_mobile_users_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_users_sessions_this_run)
+- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
+- [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
+- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
+- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
+- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
+- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
+- [model.snowplow_mobile.snowplow_mobile_users_lasts](#model.snowplow_mobile.snowplow_mobile_users_lasts)
+- [model.snowplow_web.snowplow_web_sessions_aggs](#model.snowplow_web.snowplow_web_sessions_aggs)
 - [model.snowplow_mobile.snowplow_mobile_user_mapping](#model.snowplow_mobile.snowplow_mobile_user_mapping)
 - [model.snowplow_web.snowplow_web_users_lasts](#model.snowplow_web.snowplow_web_users_lasts)
-- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
-- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
-- [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
-- [model.snowplow_mobile.snowplow_mobile_users_aggs](#model.snowplow_mobile.snowplow_mobile_users_aggs)
-- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
-- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
-- [model.snowplow_media_player.snowplow_media_player_plays_by_pageview](#model.snowplow_media_player.snowplow_media_player_plays_by_pageview)
-- [model.snowplow_mobile.snowplow_mobile_users_lasts](#model.snowplow_mobile.snowplow_mobile_users_lasts)
-- [model.snowplow_mobile.snowplow_mobile_users_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_users_sessions_this_run)
-- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
-- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- [model.snowplow_mobile.snowplow_mobile_sessions_sv_details](#model.snowplow_mobile.snowplow_mobile_sessions_sv_details)
-- [model.snowplow_mobile.snowplow_mobile_users](#model.snowplow_mobile.snowplow_mobile_users)
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
-- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
-- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
-- [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
-- [model.snowplow_media_player.snowplow_media_player_base](#model.snowplow_media_player.snowplow_media_player_base)
-- [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
-- [model.snowplow_web.snowplow_web_users_this_run](#model.snowplow_web.snowplow_web_users_this_run)
-- [model.snowplow_media_player.snowplow_media_player_pivot_base](#model.snowplow_media_player.snowplow_media_player_pivot_base)
-- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
-- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
-- [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
-- [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
-- [model.snowplow_web.snowplow_web_pv_engaged_time](#model.snowplow_web.snowplow_web_pv_engaged_time)
-- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
-- [model.snowplow_web.snowplow_web_pv_scroll_depth](#model.snowplow_web.snowplow_web_pv_scroll_depth)
 - [model.snowplow_web.snowplow_web_users_sessions_this_run](#model.snowplow_web.snowplow_web_users_sessions_this_run)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_base_sessions_this_run)
-- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
-- [model.snowplow_web.snowplow_web_sessions_aggs](#model.snowplow_web.snowplow_web_sessions_aggs)
-- [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 - [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
-- [model.snowplow_web.snowplow_web_sessions_lasts](#model.snowplow_web.snowplow_web_sessions_lasts)
+- [model.snowplow_media_player.snowplow_media_player_pivot_base](#model.snowplow_media_player.snowplow_media_player_pivot_base)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
+- [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_base_new_event_limits](#model.snowplow_web.snowplow_web_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_users_aggs](#model.snowplow_web.snowplow_web_users_aggs)
+- [model.snowplow_media_player.snowplow_media_player_plays_by_pageview](#model.snowplow_media_player.snowplow_media_player_plays_by_pageview)
+- [model.snowplow_media_player.snowplow_media_player_base_this_run](#model.snowplow_media_player.snowplow_media_player_base_this_run)
+- [model.snowplow_web.snowplow_web_sessions](#model.snowplow_web.snowplow_web_sessions)
+- [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
+- [model.snowplow_mobile.snowplow_mobile_screen_views](#model.snowplow_mobile.snowplow_mobile_screen_views)
+- [model.snowplow_web.snowplow_web_pv_engaged_time](#model.snowplow_web.snowplow_web_pv_engaged_time)
+- [model.snowplow_web.snowplow_web_base_sessions_this_run](#model.snowplow_web.snowplow_web_base_sessions_this_run)
+- [model.snowplow_web.snowplow_web_user_mapping](#model.snowplow_web.snowplow_web_user_mapping)
+- [model.snowplow_mobile.snowplow_mobile_users_this_run](#model.snowplow_mobile.snowplow_mobile_users_this_run)
+- [model.snowplow_mobile.snowplow_mobile_sessions](#model.snowplow_mobile.snowplow_mobile_sessions)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_new_event_limits](#model.snowplow_mobile.snowplow_mobile_base_new_event_limits)
+- [model.snowplow_web.snowplow_web_page_views](#model.snowplow_web.snowplow_web_page_views)
+- [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
+- [model.snowplow_web.snowplow_web_users](#model.snowplow_web.snowplow_web_users)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -2873,11 +2877,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Delete From Manifest {#macro.snowplow_utils.snowplow_delete_from_manifest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/snowplow_delete_from_manifest.sql</code>
 </summary>
 
@@ -2885,7 +2889,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2948,7 +2952,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -2960,11 +2964,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Delete Insert {#macro.snowplow_utils.snowplow_delete_insert}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/snowplow_delete_insert.sql</code>
 </summary>
 
@@ -2972,7 +2976,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -2981,23 +2985,23 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
 - [macro.snowplow_utils.materialization_snowplow_incremental_default](#macro.snowplow_utils.materialization_snowplow_incremental_default)
+- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Incremental Post Hook {#macro.snowplow_utils.snowplow_incremental_post_hook}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/snowplow_incremental_post_hook.sql</code>
 </summary>
 
@@ -3005,7 +3009,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3024,13 +3028,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Snowplow Is Incremental {#macro.snowplow_utils.snowplow_is_incremental}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/snowplow_is_incremental.sql</code>
 </summary>
 
@@ -3038,7 +3042,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3056,15 +3060,15 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
@@ -3073,11 +3077,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Merge {#macro.snowplow_utils.snowplow_merge}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/snowplow_merge.sql</code>
 </summary>
 
@@ -3085,7 +3089,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3094,25 +3098,25 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
-- [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
 - [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_bigquery](#macro.snowplow_utils.materialization_snowplow_incremental_bigquery)
+- [macro.snowplow_utils.snowplow_snowflake_get_incremental_sql](#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql)
+- [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Mobile Delete From Manifest {#macro.snowplow_utils.snowplow_mobile_delete_from_manifest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/snowplow_delete_from_manifest.sql</code>
 </summary>
 
@@ -3120,7 +3124,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3131,13 +3135,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Snowplow Snowflake Get Incremental Sql {#macro.snowplow_utils.snowplow_snowflake_get_incremental_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/snowflake/snowplow_incremental.sql</code>
 </summary>
 
@@ -3145,7 +3149,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3160,7 +3164,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3171,11 +3175,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Validate Get Incremental Strategy {#macro.snowplow_utils.snowplow_validate_get_incremental_strategy}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/materializations/snowplow_incremental/common/snowplow_validate_get_incremental_strategy.sql</code>
 </summary>
 
@@ -3183,7 +3187,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3192,25 +3196,25 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
 - [macro.snowplow_utils.materialization_snowplow_incremental_databricks](#macro.snowplow_utils.materialization_snowplow_incremental_databricks)
 - [macro.snowplow_utils.materialization_snowplow_incremental_bigquery](#macro.snowplow_utils.materialization_snowplow_incremental_bigquery)
 - [macro.snowplow_utils.materialization_snowplow_incremental_snowflake](#macro.snowplow_utils.materialization_snowplow_incremental_snowflake)
+- [macro.snowplow_utils.materialization_snowplow_incremental_spark](#macro.snowplow_utils.materialization_snowplow_incremental_spark)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Web Delete From Manifest {#macro.snowplow_utils.snowplow_web_delete_from_manifest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/snowplow_delete_from_manifest.sql</code>
 </summary>
 
@@ -3218,7 +3222,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3229,13 +3233,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Throw Compiler Error {#macro.snowplow_utils.throw_compiler_error}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/throw_compiler_error.sql</code>
 </summary>
 
@@ -3243,7 +3247,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3262,7 +3266,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3273,11 +3277,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Timestamp Add {#macro.snowplow_utils.timestamp_add}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/timestamp_functions.sql</code>
 </summary>
 
@@ -3285,7 +3289,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3323,34 +3327,34 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
-- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
-- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 - [model.snowplow_web.snowplow_web_base_events_this_run](#model.snowplow_web.snowplow_web_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_events_this_run](#model.snowplow_mobile.snowplow_mobile_base_events_this_run)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
+- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
 - [macro.snowplow_utils.get_run_limits](#macro.snowplow_utils.get_run_limits)
+- [macro.snowplow_utils.return_base_new_event_limits](#macro.snowplow_utils.return_base_new_event_limits)
 - [macro.snowplow_utils.get_session_lookback_limit](#macro.snowplow_utils.get_session_lookback_limit)
 - [macro.snowplow_utils.get_quarantine_sql](#macro.snowplow_utils.get_quarantine_sql)
-- [macro.snowplow_utils.return_base_new_event_limits](#macro.snowplow_utils.return_base_new_event_limits)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Timestamp Diff {#macro.snowplow_utils.timestamp_diff}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/timestamp_functions.sql</code>
 </summary>
 
@@ -3358,7 +3362,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3388,23 +3392,23 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 - [model.snowplow_mobile.snowplow_mobile_sessions_aggs](#model.snowplow_mobile.snowplow_mobile_sessions_aggs)
+- [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### To Unixtstamp {#macro.snowplow_utils.to_unixtstamp}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/timestamp_functions.sql</code>
 </summary>
 
@@ -3412,7 +3416,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3424,7 +3428,7 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3435,11 +3439,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Tstamp To Str {#macro.snowplow_utils.tstamp_to_str}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/tstamp_to_str.sql</code>
 </summary>
 
@@ -3447,7 +3451,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3456,7 +3460,7 @@ This macro does not currently have a description.
 {%- endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3467,11 +3471,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Type Max String {#macro.snowplow_utils.type_max_string}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/datatypes.sql</code>
 </summary>
 
@@ -3479,7 +3483,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3529,13 +3533,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Type String {#macro.snowplow_utils.type_string}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/datatypes.sql</code>
 </summary>
 
@@ -3543,7 +3547,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3577,7 +3581,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3585,19 +3589,19 @@ This macro does not currently have a description.
 <TabItem value="model" label="Models" default>
 
 - [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
-- [model.snowplow_normalize.snowplow_normalize_incremental_manifest](#model.snowplow_normalize.snowplow_normalize_incremental_manifest)
 - [model.snowplow_mobile.snowplow_mobile_sessions_this_run](#model.snowplow_mobile.snowplow_mobile_sessions_this_run)
 - [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
 - [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
+- [model.snowplow_normalize.snowplow_normalize_incremental_manifest](#model.snowplow_normalize.snowplow_normalize_incremental_manifest)
 - [model.snowplow_web.snowplow_web_sessions_this_run](#model.snowplow_web.snowplow_web_sessions_this_run)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Unnest {#macro.snowplow_utils.unnest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/cross_db/unnest.sql</code>
 </summary>
 
@@ -3605,7 +3609,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3668,7 +3672,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3679,11 +3683,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Update Incremental Manifest Table {#macro.snowplow_utils.update_incremental_manifest_table}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/incremental_hooks/update_incremental_manifest_table.sql</code>
 </summary>
 
@@ -3691,7 +3695,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3787,7 +3791,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -3798,13 +3802,13 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 
 ## Snowplow Web
 ### Snowplow Web Delete From Manifest {#macro.snowplow_utils.snowplow_web_delete_from_manifest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/snowplow_delete_from_manifest.sql</code>
 </summary>
 
@@ -3812,7 +3816,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3823,13 +3827,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Allow Refresh {#macro.snowplow_web.allow_refresh}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/allow_refresh.sql</code>
 </summary>
 
@@ -3837,7 +3841,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3867,24 +3871,24 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_incremental_manifest](#model.snowplow_web.snowplow_web_incremental_manifest)
 - [model.snowplow_web.snowplow_web_base_quarantined_sessions](#model.snowplow_web.snowplow_web_base_quarantined_sessions)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Filter Bots {#macro.snowplow_web.filter_bots}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/filter_bots.sql</code>
 </summary>
 
@@ -3892,7 +3896,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -3948,23 +3952,23 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_page_view_events](#model.snowplow_web.snowplow_web_page_view_events)
 - [model.snowplow_web.snowplow_web_page_views_this_run](#model.snowplow_web.snowplow_web_page_views_this_run)
+- [model.snowplow_web.snowplow_web_page_view_events](#model.snowplow_web.snowplow_web_page_view_events)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Iab Fields {#macro.snowplow_web.iab_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/page_view_contexts.sql</code>
 </summary>
 
@@ -3972,7 +3976,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -3990,13 +3994,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Stitch User Identifiers {#macro.snowplow_web.stitch_user_identifiers}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/stitch_user_identifiers.sql</code>
 </summary>
 
@@ -4004,7 +4008,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4032,7 +4036,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4043,11 +4047,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Ua Fields {#macro.snowplow_web.ua_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/page_view_contexts.sql</code>
 </summary>
 
@@ -4055,7 +4059,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4081,13 +4085,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Web Cluster By Fields Consent {#macro.snowplow_web.web_cluster_by_fields_consent}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4095,7 +4099,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4121,13 +4125,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Web Cluster By Fields Page Views {#macro.snowplow_web.web_cluster_by_fields_page_views}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4135,7 +4139,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4161,7 +4165,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4172,11 +4176,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Web Cluster By Fields Sessions {#macro.snowplow_web.web_cluster_by_fields_sessions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4184,7 +4188,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4210,7 +4214,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4221,11 +4225,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Web Cluster By Fields Sessions Lifecycle {#macro.snowplow_web.web_cluster_by_fields_sessions_lifecycle}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4233,7 +4237,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4259,7 +4263,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4270,11 +4274,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Web Cluster By Fields Users {#macro.snowplow_web.web_cluster_by_fields_users}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4282,7 +4286,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4308,7 +4312,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4319,11 +4323,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Yauaa Fields {#macro.snowplow_web.yauaa_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/page_view_contexts.sql</code>
 </summary>
 
@@ -4331,7 +4335,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4365,13 +4369,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Edge Cases To Ignore {#macro.snowplow_web_integration_tests.edge_cases_to_ignore}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/edge_cases_to_ignore.sql</code>
 </summary>
 
@@ -4379,7 +4383,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4391,7 +4395,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4402,13 +4406,13 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 
 ## Snowplow Mobile
 ### Allow Refresh {#macro.snowplow_mobile.allow_refresh}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/allow_refresh.sql</code>
 </summary>
 
@@ -4416,7 +4420,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4446,23 +4450,23 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 - [model.snowplow_mobile.snowplow_mobile_incremental_manifest](#model.snowplow_mobile.snowplow_mobile_incremental_manifest)
+- [model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest](#model.snowplow_mobile.snowplow_mobile_base_sessions_lifecycle_manifest)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### App Context Fields {#macro.snowplow_mobile.app_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -4470,7 +4474,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4486,13 +4490,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### App Error Context Fields {#macro.snowplow_mobile.app_error_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -4500,7 +4504,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4525,13 +4529,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Bool Or {#macro.snowplow_mobile.bool_or}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bool_or.sql</code>
 </summary>
 
@@ -4539,7 +4543,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4591,7 +4595,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4602,11 +4606,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Cluster By Fields App Errors {#macro.snowplow_mobile.cluster_by_fields_app_errors}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4614,7 +4618,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4640,13 +4644,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Geo Context Fields {#macro.snowplow_mobile.geo_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -4654,7 +4658,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -4675,13 +4679,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Get Device User Id Path Sql {#macro.snowplow_mobile.get_device_user_id_path_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/get_path_sql.sql</code>
 </summary>
 
@@ -4689,7 +4693,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4772,13 +4776,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Get Session Id Path Sql {#macro.snowplow_mobile.get_session_id_path_sql}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/get_path_sql.sql</code>
 </summary>
 
@@ -4786,7 +4790,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4868,13 +4872,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Mobile Cluster By Fields Screen Views {#macro.snowplow_mobile.mobile_cluster_by_fields_screen_views}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4882,7 +4886,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4908,7 +4912,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4919,11 +4923,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Mobile Cluster By Fields Sessions {#macro.snowplow_mobile.mobile_cluster_by_fields_sessions}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4931,7 +4935,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -4957,7 +4961,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -4968,11 +4972,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Mobile Cluster By Fields Sessions Lifecycle {#macro.snowplow_mobile.mobile_cluster_by_fields_sessions_lifecycle}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -4980,7 +4984,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5006,13 +5010,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Mobile Cluster By Fields Users {#macro.snowplow_mobile.mobile_cluster_by_fields_users}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/cluster_by_fields.sql</code>
 </summary>
 
@@ -5020,7 +5024,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5046,7 +5050,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -5057,11 +5061,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Mobile Context Fields {#macro.snowplow_mobile.mobile_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -5069,7 +5073,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5094,13 +5098,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Screen Context Fields {#macro.snowplow_mobile.screen_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -5108,7 +5112,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5129,13 +5133,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Screen View Event Fields {#macro.snowplow_mobile.screen_view_event_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/unstruct_event_fields.sql</code>
 </summary>
 
@@ -5143,7 +5147,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5164,13 +5168,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Session Context Fields {#macro.snowplow_mobile.session_context_fields}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/bigquery/context_fields.sql</code>
 </summary>
 
@@ -5178,7 +5182,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5197,13 +5201,13 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Stitch User Identifiers {#macro.snowplow_mobile.stitch_user_identifiers}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/stitch_user_identifiers.sql</code>
 </summary>
 
@@ -5211,7 +5215,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5239,7 +5243,7 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -5250,11 +5254,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snowplow Mobile Delete From Manifest {#macro.snowplow_utils.snowplow_mobile_delete_from_manifest}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/utils/snowplow_delete_from_manifest.sql</code>
 </summary>
 
@@ -5262,7 +5266,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5273,15 +5277,15 @@ This macro does not currently have a description.
 {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 
 ## Snowplow Media Player
 ### Get Percentage Boundaries {#macro.snowplow_media_player.get_percentage_boundaries}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/get_percentage_boundaries.sql</code>
 </summary>
 
@@ -5289,7 +5293,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 ```jinja2
@@ -5318,25 +5322,25 @@ This macro does not currently have a description.
  {% endmacro %}
 ```
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
 - [model.snowplow_media_player.snowplow_media_player_pivot_base](#model.snowplow_media_player.snowplow_media_player_pivot_base)
+- [model.snowplow_media_player.snowplow_media_player_media_stats](#model.snowplow_media_player.snowplow_media_player_media_stats)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 
 ## Snowplow Normalize
 ### Allow Refresh {#macro.snowplow_normalize.allow_refresh}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/allow_refresh.sql</code>
 </summary>
 
@@ -5344,7 +5348,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5374,7 +5378,7 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
@@ -5385,11 +5389,11 @@ This macro does not currently have a description.
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Normalize Events {#macro.snowplow_normalize.normalize_events}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/normalize_events.sql</code>
 </summary>
 
@@ -5410,7 +5414,7 @@ A macro to produce a table from `base_events_this_run` with the input columns, f
 - `remove_new_event_check` *(boolean)*: A flag to disable the `with_new_events` part of the macro, to allow for integration tests to run
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5657,24 +5661,24 @@ where
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_normalize_integration_tests.databricks__test_normalize_events](#macro.snowplow_normalize_integration_tests.databricks__test_normalize_events)
 - [macro.snowplow_normalize_integration_tests.bigquery__test_normalize_events](#macro.snowplow_normalize_integration_tests.bigquery__test_normalize_events)
 - [macro.snowplow_normalize_integration_tests.snowflake__test_normalize_events](#macro.snowplow_normalize_integration_tests.snowflake__test_normalize_events)
+- [macro.snowplow_normalize_integration_tests.databricks__test_normalize_events](#macro.snowplow_normalize_integration_tests.databricks__test_normalize_events)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Snakeify Case {#macro.snowplow_normalize.snakeify_case}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/snakeify_case.sql</code>
 </summary>
 
@@ -5685,7 +5689,7 @@ Take a string in camel/pascal case and make it snakecase
 - `text` *(string)*: the text to convert to snakecase
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5712,28 +5716,28 @@ Take a string in camel/pascal case and make it snakecase
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
+- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
 - [macro.snowplow_normalize.snowflake__normalize_events](#macro.snowplow_normalize.snowflake__normalize_events)
-- [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
 - [macro.snowplow_normalize.snowflake__users_table](#macro.snowplow_normalize.snowflake__users_table)
-- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
 - [macro.snowplow_normalize_integration_tests.default__test_snakeify_case](#macro.snowplow_normalize_integration_tests.default__test_snakeify_case)
 - [macro.snowplow_normalize.bigquery__normalize_events](#macro.snowplow_normalize.bigquery__normalize_events)
-- [macro.snowplow_normalize.databricks__normalize_events](#macro.snowplow_normalize.databricks__normalize_events)
+- [macro.snowplow_normalize.databricks__users_table](#macro.snowplow_normalize.databricks__users_table)
+- [macro.snowplow_normalize.bigquery__users_table](#macro.snowplow_normalize.bigquery__users_table)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Users Table {#macro.snowplow_normalize.users_table}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/users_table.sql</code>
 </summary>
 
@@ -5750,7 +5754,7 @@ A macro to produce a users table from the `base_events_this_run` table, using th
 - `remove_new_event_check` *(boolean)*: A flag to disable the `with_new_events` part of the macro, to allow for integration tests to run
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -5994,24 +5998,24 @@ where
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
 
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
+- [macro.snowplow_normalize_integration_tests.snowflake__test_users_table](#macro.snowplow_normalize_integration_tests.snowflake__test_users_table)
 - [macro.snowplow_normalize_integration_tests.bigquery__test_users_table](#macro.snowplow_normalize_integration_tests.bigquery__test_users_table)
 - [macro.snowplow_normalize_integration_tests.databricks__test_users_table](#macro.snowplow_normalize_integration_tests.databricks__test_users_table)
-- [macro.snowplow_normalize_integration_tests.snowflake__test_users_table](#macro.snowplow_normalize_integration_tests.snowflake__test_users_table)
 
 </TabItem>
 </Tabs>
-</details>
+</DbtDetails>
 
 ### Test Normalize Events {#macro.snowplow_normalize_integration_tests.test_normalize_events}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/test_normalize_events.sql</code>
 </summary>
 
@@ -6019,7 +6023,7 @@ where
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -6172,13 +6176,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Test Snakeify Case {#macro.snowplow_normalize_integration_tests.test_snakeify_case}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/test_snakeify_case.sql</code>
 </summary>
 
@@ -6186,7 +6190,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -6240,13 +6244,13 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>
 
 ### Test Users Table {#macro.snowplow_normalize_integration_tests.test_users_table}
 
-<details><summary>
+<DbtDetails><summary>
 <code>macros/test_users_table.sql</code>
 </summary>
 
@@ -6254,7 +6258,7 @@ This macro does not currently have a description.
 This macro does not currently have a description.
 
 #### Details
-<details>
+<DbtDetails>
 <summary>Code</summary>
 
 <Tabs groupId="dispatched_sql">
@@ -6393,6 +6397,6 @@ This macro does not currently have a description.
 </TabItem>
 </Tabs>
 
-</details>
+</DbtDetails>
 
-</details>
+</DbtDetails>

@@ -303,3 +303,7 @@ textarea {
 textarea {
   max-width: 100%;
 }
+
+[data-theme='light'] .dbt details {
+  --ifm-alert-background-color: null;
+}
