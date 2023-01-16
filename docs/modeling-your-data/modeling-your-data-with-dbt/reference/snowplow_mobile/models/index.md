@@ -27,7 +27,7 @@ This page is auto-generated from our dbt packages, some information may be incom
 </summary>
 
 #### Description
-{{ doc("table_app_errors") }}
+This derived table contains all app errors and should be the end point for any analysis or BI tools looking to investigate app errors. This is an optional table that will be empty if the `app_errors` module is not enabled.
 
 #### Details
 <DbtDetails>
@@ -35,69 +35,69 @@ This page is auto-generated from our dbt packages, some information may be incom
 
 | Column Name | Description |
 |--------------|-------------|
-| event_id | {{ doc("col_event_id") }} |
-| app_id | {{ doc("col_app_id") }} |
-| user_id | {{ doc("col_user_id") }} |
-| device_user_id | {{ doc("col_device_user_id") }} |
-| network_userid | {{ doc("col_network_userid") }} |
-| session_id | {{ doc("col_session_id") }} |
-| session_index | {{ doc("col_session_index") }} |
-| previous_session_id | {{ doc("col_previous_session_id") }} |
-| session_first_event_id | {{ doc("col_session_first_event_id") }} |
-| dvce_created_tstamp | {{ doc("col_dvce_created_tstamp") }} |
-| collector_tstamp | {{ doc("col_collector_tstamp") }} |
-| derived_tstamp | {{ doc("col_derived_tstamp") }} |
-| model_tstamp | {{ doc("col_model_tstamp") }} |
-| platform | {{ doc("col_platform") }} |
-| dvce_screenwidth | {{ doc("col_dvce_screenwidth") }} |
-| dvce_screenheight | {{ doc("col_dvce_screenheight") }} |
-| device_manufacturer | {{ doc("col_device_manufacturer") }} |
-| device_model | {{ doc("col_device_model") }} |
-| os_type | {{ doc("col_os_type") }} |
-| os_version | {{ doc("col_os_version") }} |
-| android_idfa | {{ doc("col_android_idfa") }} |
-| apple_idfa | {{ doc("col_apple_idfa") }} |
-| apple_idfv | {{ doc("col_apple_idfv") }} |
-| open_idfa | {{ doc("col_open_idfa") }} |
-| screen_id | {{ doc("col_screen_id") }} |
-| screen_name | {{ doc("col_screen_name") }} |
-| screen_activity | {{ doc("col_screen_activity") }} |
-| screen_fragment | {{ doc("col_screen_fragment") }} |
-| screen_top_view_controller | {{ doc("col_screen_top_view_controller") }} |
-| screen_type | {{ doc("col_screen_type") }} |
-| screen_view_controller | {{ doc("col_screen_view_controller") }} |
-| device_latitude | {{ doc("col_device_latitude") }} |
-| device_longitude | {{ doc("col_device_longitude") }} |
-| device_latitude_longitude_accuracy | {{ doc("col_device_latitude_longitude_accuracy") }} |
-| device_altitude | {{ doc("col_device_altitude") }} |
-| device_altitude_accuracy | {{ doc("col_device_altitude_accuracy") }} |
-| device_bearing | {{ doc("col_device_bearing") }} |
-| device_speed | {{ doc("col_device_speed") }} |
-| geo_country | {{ doc("col_geo_country") }} |
-| geo_region | {{ doc("col_geo_region") }} |
-| geo_city | {{ doc("col_geo_city") }} |
-| geo_zipcode | {{ doc("col_geo_zipcode") }} |
-| geo_latitude | {{ doc("col_geo_latitude") }} |
-| geo_longitude | {{ doc("col_geo_longitude") }} |
-| geo_region_name | {{ doc("col_geo_region_name") }} |
-| geo_timezone | {{ doc("col_geo_timezone") }} |
-| user_ipaddress | {{ doc("col_user_ipaddress") }} |
-| useragent | {{ doc("col_useragent") }} |
-| carrier | {{ doc("col_carrier") }} |
-| network_technology | {{ doc("col_network_technology") }} |
-| network_type | {{ doc("col_network_type") }} |
-| build | {{ doc("col_build") }} |
-| version | {{ doc("col_version") }} |
-| event_index_in_session | {{ doc("col_event_index_in_session") }} |
-| message | {{ doc("col_message") }} |
-| programming_language | {{ doc("col_programming_language") }} |
-| class_name | {{ doc("col_class_name") }} |
-| exception_name | {{ doc("col_exception_name") }} |
-| is_fatal | {{ doc("col_is_fatal") }} |
-| line_number | {{ doc("col_line_number") }} |
-| stack_trace | {{ doc("col_stack_trace") }} |
-| thread_id | {{ doc("col_thread_id") }} |
-| thread_name | {{ doc("col_thread_name") }} |
+| event_id | A UUID for each event e.g. `c6ef3124-b53a-4b13-a233-0088f79dcbcb`. |
+| app_id | Application ID e.g. `angry-birds` is used to distinguish different applications that are being tracked by the same Snowplow stack, e.g. production versus dev. |
+| user_id | Unique ID set by business e.g. `jon.doe@email.com`. |
+| device_user_id | Unique device user id. |
+| network_userid | User ID set by Snowplow using 3rd party cookie e.g. `ecdff4d0-9175-40ac-a8bb-325c49733607`. |
+| session_id | A visit / session UUID e.g. `c6ef3124-b53a-4b13-a233-0088f79dcbcb`. |
+| session_index | A visit / session index e.g. `3`. |
+| previous_session_id | A previous visit / session index e.g. `3`. |
+| session_first_event_id | A first visit / session index e.g. `3`. |
+| dvce_created_tstamp | Timestamp event was recorded on the client device e.g. `2013-11-26 00:03:57.885`. |
+| collector_tstamp | Time stamp for the event recorded by the collector e.g. `2013-11-26 00:02:05`. |
+| derived_tstamp | Timestamp making allowance for innaccurate device clock e.g. `2013-11-26 00:02:04`. |
+| model_tstamp | The current timestamp when the model processed this row. |
+| platform | Platform e.g. `web`. |
+| dvce_screenwidth | Screen width in pixels e.g. `1900`. |
+| dvce_screenheight | Screen height in pixels e.g. `1024`. |
+| device_manufacturer | Manufacturer name of the device eg. `Apple`. |
+| device_model | Model of the mobile device. |
+| os_type | Type of OS running on the mobile device. |
+| os_version | Operation system full version. |
+| android_idfa | Identifier for Advertisers for Android devices. |
+| apple_idfa | Identifier for Advertisers for Apple devices. |
+| apple_idfv | Identifier for Vendors for Apple devices. |
+| open_idfa | Identifier for Vendors for Open devices. |
+| screen_id | A UUID for each screen e.g. `738f1fbc-5298-46fa-9474-bc0a65f014ab`. |
+| screen_name | The name set for a specific screen, e.g. `DemoScreenName`. |
+| screen_activity | The name of the Activity element in the screen. |
+| screen_fragment | The name of the screen fragment (also known as an anchor). |
+| screen_top_view_controller | The name of the root view controller. |
+| screen_type | The type of screen that was viewed. |
+| screen_view_controller | The name of the view controller. |
+| device_latitude | Latitude coordinates for device location. |
+| device_longitude | Longitude coordinates for device location. |
+| device_latitude_longitude_accuracy | Accuracy of Latitude and Longitude coordinates for device location. |
+| device_altitude | Altitude coordinates for device location. |
+| device_altitude_accuracy | Accuracy of device altitude coordinates. |
+| device_bearing | Horizontal angle between device and true north. |
+| device_speed | Mobile device speed. |
+| geo_country | ISO 3166-1 code for the country the visitor is located in e.g. `GB`, `US`. |
+| geo_region | ISO-3166-2 code for country region the visitor is in e.g. `I9`, `TX`. |
+| geo_city | City the visitor is in e.g. `New York`, `London`. |
+| geo_zipcode | Postcode the visitor is in e.g. `94109`. |
+| geo_latitude | Visitor location latitude e.g. `37.443604`. |
+| geo_longitude | Visitor location longitude e.g. `-122.4124`. |
+| geo_region_name | Visitor region name e.g. `Florida`. |
+| geo_timezone | Visitor timezone name e.g. `Europe/London`. |
+| user_ipaddress | User IP address e.g. `92.231.54.234`. |
+| useragent | Raw useragent. |
+| carrier | Carrier serivce provider used within device. |
+| network_technology | technology used by the network provider of the device. |
+| network_type | Type of network eg. `3G`. |
+| build | The build of the application. |
+| version | The application version. |
+| event_index_in_session | A session index of the event. |
+| message | The error message that the application showed when the app error occurred. |
+| programming_language | The name of the programming language used in which the app error occured. |
+| class_name | The name of the class where the app error occurred. |
+| exception_name | The name of the exception encountered in the app error. |
+| is_fatal | A boolean to describe whether the app error was fatal or not. |
+| line_number | The line number in the code where the app error occured. |
+| stack_trace | The full stack trace that was presented when the app error occured. |
+| thread_id | The ID of the thread in which the app error occurred. |
+| thread_name | The name of the process that ran the thread when the app error occurred. |
 </DbtDetails>
 
 <DbtDetails>
@@ -165,7 +165,7 @@ where {{ snowplow_utils.is_run_with_new_events('snowplow_mobile') }} --returns f
 </summary>
 
 #### Description
-{{ doc("table_app_errors_this_run") }}
+This staging table contains all the app errors for the given run of the Mobile model. This is an optional table that will not be generated if the `app_errors` module is not enabled.
 
 #### File Paths
 <Tabs groupId="dispatched_sql">
@@ -194,69 +194,69 @@ where {{ snowplow_utils.is_run_with_new_events('snowplow_mobile') }} --returns f
 
 | Column Name | Description |
 |--------------|-------------|
-| event_id | {{ doc("col_event_id") }} |
-| app_id | {{ doc("col_app_id") }} |
-| user_id | {{ doc("col_user_id") }} |
-| device_user_id | {{ doc("col_device_user_id") }} |
-| network_userid | {{ doc("col_network_userid") }} |
-| session_id | {{ doc("col_session_id") }} |
-| session_index | {{ doc("col_session_index") }} |
-| previous_session_id | {{ doc("col_previous_session_id") }} |
-| session_first_event_id | {{ doc("col_session_first_event_id") }} |
-| dvce_created_tstamp | {{ doc("col_dvce_created_tstamp") }} |
-| collector_tstamp | {{ doc("col_collector_tstamp") }} |
-| derived_tstamp | {{ doc("col_derived_tstamp") }} |
-| model_tstamp | {{ doc("col_model_tstamp") }} |
-| platform | {{ doc("col_platform") }} |
-| dvce_screenwidth | {{ doc("col_dvce_screenwidth") }} |
-| dvce_screenheight | {{ doc("col_dvce_screenheight") }} |
-| device_manufacturer | {{ doc("col_device_manufacturer") }} |
-| device_model | {{ doc("col_device_model") }} |
-| os_type | {{ doc("col_os_type") }} |
-| os_version | {{ doc("col_os_version") }} |
-| android_idfa | {{ doc("col_android_idfa") }} |
-| apple_idfa | {{ doc("col_apple_idfa") }} |
-| apple_idfv | {{ doc("col_apple_idfv") }} |
-| open_idfa | {{ doc("col_open_idfa") }} |
-| screen_id | {{ doc("col_screen_id") }} |
-| screen_name | {{ doc("col_screen_name") }} |
-| screen_activity | {{ doc("col_screen_activity") }} |
-| screen_fragment | {{ doc("col_screen_fragment") }} |
-| screen_top_view_controller | {{ doc("col_screen_top_view_controller") }} |
-| screen_type | {{ doc("col_screen_type") }} |
-| screen_view_controller | {{ doc("col_screen_view_controller") }} |
-| device_latitude | {{ doc("col_device_latitude") }} |
-| device_longitude | {{ doc("col_device_longitude") }} |
-| device_latitude_longitude_accuracy | {{ doc("col_device_latitude_longitude_accuracy") }} |
-| device_altitude | {{ doc("col_device_altitude") }} |
-| device_altitude_accuracy | {{ doc("col_device_altitude_accuracy") }} |
-| device_bearing | {{ doc("col_device_bearing") }} |
-| device_speed | {{ doc("col_device_speed") }} |
-| geo_country | {{ doc("col_geo_country") }} |
-| geo_region | {{ doc("col_geo_region") }} |
-| geo_city | {{ doc("col_geo_city") }} |
-| geo_zipcode | {{ doc("col_geo_zipcode") }} |
-| geo_latitude | {{ doc("col_geo_latitude") }} |
-| geo_longitude | {{ doc("col_geo_longitude") }} |
-| geo_region_name | {{ doc("col_geo_region_name") }} |
-| geo_timezone | {{ doc("col_geo_timezone") }} |
-| user_ipaddress | {{ doc("col_user_ipaddress") }} |
-| useragent | {{ doc("col_useragent") }} |
-| carrier | {{ doc("col_carrier") }} |
-| network_technology | {{ doc("col_network_technology") }} |
-| network_type | {{ doc("col_network_type") }} |
-| build | {{ doc("col_build") }} |
-| version | {{ doc("col_version") }} |
-| event_index_in_session | {{ doc("col_event_index_in_session") }} |
-| message | {{ doc("col_message") }} |
-| programming_language | {{ doc("col_programming_language") }} |
-| class_name | {{ doc("col_class_name") }} |
-| exception_name | {{ doc("col_exception_name") }} |
-| is_fatal | {{ doc("col_is_fatal") }} |
-| line_number | {{ doc("col_line_number") }} |
-| stack_trace | {{ doc("col_stack_trace") }} |
-| thread_id | {{ doc("col_thread_id") }} |
-| thread_name | {{ doc("col_thread_name") }} |
+| event_id | A UUID for each event e.g. `c6ef3124-b53a-4b13-a233-0088f79dcbcb`. |
+| app_id | Application ID e.g. `angry-birds` is used to distinguish different applications that are being tracked by the same Snowplow stack, e.g. production versus dev. |
+| user_id | Unique ID set by business e.g. `jon.doe@email.com`. |
+| device_user_id | Unique device user id. |
+| network_userid | User ID set by Snowplow using 3rd party cookie e.g. `ecdff4d0-9175-40ac-a8bb-325c49733607`. |
+| session_id | A visit / session UUID e.g. `c6ef3124-b53a-4b13-a233-0088f79dcbcb`. |
+| session_index | A visit / session index e.g. `3`. |
+| previous_session_id | A previous visit / session index e.g. `3`. |
+| session_first_event_id | A first visit / session index e.g. `3`. |
+| dvce_created_tstamp | Timestamp event was recorded on the client device e.g. `2013-11-26 00:03:57.885`. |
+| collector_tstamp | Time stamp for the event recorded by the collector e.g. `2013-11-26 00:02:05`. |
+| derived_tstamp | Timestamp making allowance for innaccurate device clock e.g. `2013-11-26 00:02:04`. |
+| model_tstamp | The current timestamp when the model processed this row. |
+| platform | Platform e.g. `web`. |
+| dvce_screenwidth | Screen width in pixels e.g. `1900`. |
+| dvce_screenheight | Screen height in pixels e.g. `1024`. |
+| device_manufacturer | Manufacturer name of the device eg. `Apple`. |
+| device_model | Model of the mobile device. |
+| os_type | Type of OS running on the mobile device. |
+| os_version | Operation system full version. |
+| android_idfa | Identifier for Advertisers for Android devices. |
+| apple_idfa | Identifier for Advertisers for Apple devices. |
+| apple_idfv | Identifier for Vendors for Apple devices. |
+| open_idfa | Identifier for Vendors for Open devices. |
+| screen_id | A UUID for each screen e.g. `738f1fbc-5298-46fa-9474-bc0a65f014ab`. |
+| screen_name | The name set for a specific screen, e.g. `DemoScreenName`. |
+| screen_activity | The name of the Activity element in the screen. |
+| screen_fragment | The name of the screen fragment (also known as an anchor). |
+| screen_top_view_controller | The name of the root view controller. |
+| screen_type | The type of screen that was viewed. |
+| screen_view_controller | The name of the view controller. |
+| device_latitude | Latitude coordinates for device location. |
+| device_longitude | Longitude coordinates for device location. |
+| device_latitude_longitude_accuracy | Accuracy of Latitude and Longitude coordinates for device location. |
+| device_altitude | Altitude coordinates for device location. |
+| device_altitude_accuracy | Accuracy of device altitude coordinates. |
+| device_bearing | Horizontal angle between device and true north. |
+| device_speed | Mobile device speed. |
+| geo_country | ISO 3166-1 code for the country the visitor is located in e.g. `GB`, `US`. |
+| geo_region | ISO-3166-2 code for country region the visitor is in e.g. `I9`, `TX`. |
+| geo_city | City the visitor is in e.g. `New York`, `London`. |
+| geo_zipcode | Postcode the visitor is in e.g. `94109`. |
+| geo_latitude | Visitor location latitude e.g. `37.443604`. |
+| geo_longitude | Visitor location longitude e.g. `-122.4124`. |
+| geo_region_name | Visitor region name e.g. `Florida`. |
+| geo_timezone | Visitor timezone name e.g. `Europe/London`. |
+| user_ipaddress | User IP address e.g. `92.231.54.234`. |
+| useragent | Raw useragent. |
+| carrier | Carrier serivce provider used within device. |
+| network_technology | technology used by the network provider of the device. |
+| network_type | Type of network eg. `3G`. |
+| build | The build of the application. |
+| version | The application version. |
+| event_index_in_session | A session index of the event. |
+| message | The error message that the application showed when the app error occurred. |
+| programming_language | The name of the programming language used in which the app error occured. |
+| class_name | The name of the class where the app error occurred. |
+| exception_name | The name of the exception encountered in the app error. |
+| is_fatal | A boolean to describe whether the app error was fatal or not. |
+| line_number | The line number in the code where the app error occured. |
+| stack_trace | The full stack trace that was presented when the app error occured. |
+| thread_id | The ID of the thread in which the app error occurred. |
+| thread_name | The name of the process that ran the thread when the app error occurred. |
 </DbtDetails>
 
 <DbtDetails>
@@ -698,7 +698,9 @@ where e.event_name = 'application_error'
 </summary>
 
 #### Description
-{{ doc("table_base_app_context") }}
+** This table only exists when working in a Redshift or Postgres warehouse. **
+
+This optional table provides extra context on an event level and brings in data surrounding the application's build and version.
 
 #### Details
 <DbtDetails>
@@ -706,10 +708,10 @@ where e.event_name = 'application_error'
 
 | Column Name | Description |
 |--------------|-------------|
-| root_id | {{ doc("col_root_id") }} |
-| root_tstamp | {{ doc("col_root_tstamp") }} |
-| build | {{ doc("col_build") }} |
-| version | {{ doc("col_version") }} |
+| root_id | The corresponding UUID used in the root table. |
+| root_tstamp | The timestamp for when this event was produced. |
+| build | The build of the application. |
+| version | The application version. |
 </DbtDetails>
 
 <DbtDetails>
@@ -1589,7 +1591,9 @@ from {{ ref('snowplow_mobile_base_sessions_this_run') }} s
 </summary>
 
 #### Description
-{{ doc("table_base_geo_context") }}
+** This table only exists when working in a Redshift or Postgres warehouse. **
+
+This optional table provides extra context on an event level and brings in data surrounding a device's geographical properties, such as latitude/longitude, altitude, and speed.
 
 #### Details
 <DbtDetails>
@@ -1597,15 +1601,15 @@ from {{ ref('snowplow_mobile_base_sessions_this_run') }} s
 
 | Column Name | Description |
 |--------------|-------------|
-| root_id | {{ doc("col_root_id") }} |
-| root_tstamp | {{ doc("col_root_tstamp") }} |
-| device_latitude | {{ doc("col_device_latitude") }} |
-| device_longitude | {{ doc("col_device_longitude") }} |
-| device_latitude_longitude_accuracy | {{ doc("col_device_latitude_longitude_accuracy") }} |
-| device_altitude | {{ doc("col_device_altitude") }} |
-| device_altitude_accuracy | {{ doc("col_device_altitude_accuracy") }} |
-| device_bearing | {{ doc("col_device_bearing") }} |
-| device_speed | {{ doc("col_device_speed") }} |
+| root_id | The corresponding UUID used in the root table. |
+| root_tstamp | The timestamp for when this event was produced. |
+| device_latitude | Latitude coordinates for device location. |
+| device_longitude | Longitude coordinates for device location. |
+| device_latitude_longitude_accuracy | Accuracy of Latitude and Longitude coordinates for device location. |
+| device_altitude | Altitude coordinates for device location. |
+| device_altitude_accuracy | Accuracy of device altitude coordinates. |
+| device_bearing | Horizontal angle between device and true north. |
+| device_speed | Mobile device speed. |
 </DbtDetails>
 
 <DbtDetails>
@@ -1668,7 +1672,9 @@ where gc.root_tstamp between {{ lower_limit }} and {{ upper_limit }}
 </summary>
 
 #### Description
-{{ doc("table_base_mobile_context") }}
+** This table only exists when working in a Redshift or Postgres warehouse. **
+
+This optional table provides extra context on an event level and brings in data surrounding a device's manufacturer, model, and carrier.
 
 #### Details
 <DbtDetails>
@@ -1676,19 +1682,19 @@ where gc.root_tstamp between {{ lower_limit }} and {{ upper_limit }}
 
 | Column Name | Description |
 |--------------|-------------|
-| root_id | {{ doc("col_root_id") }} |
-| root_tstamp | {{ doc("col_root_tstamp") }} |
-| device_manufacturer | {{ doc("col_device_manufacturer") }} |
-| device_model | {{ doc("col_device_model") }} |
-| os_type | {{ doc("col_os_type") }} |
-| os_version | {{ doc("col_os_version") }} |
-| android_idfa | {{ doc("col_android_idfa") }} |
-| apple_idfa | {{ doc("col_apple_idfa") }} |
-| apple_idfv | {{ doc("col_apple_idfv") }} |
-| carrier | {{ doc("col_carrier") }} |
-| open_idfa | {{ doc("col_open_idfa") }} |
-| network_technology | {{ doc("col_network_technology") }} |
-| network_type | {{ doc("col_network_type") }} |
+| root_id | The corresponding UUID used in the root table. |
+| root_tstamp | The timestamp for when this event was produced. |
+| device_manufacturer | Manufacturer name of the device eg. `Apple`. |
+| device_model | Model of the mobile device. |
+| os_type | Type of OS running on the mobile device. |
+| os_version | Operation system full version. |
+| android_idfa | Identifier for Advertisers for Android devices. |
+| apple_idfa | Identifier for Advertisers for Apple devices. |
+| apple_idfv | Identifier for Vendors for Apple devices. |
+| carrier | Carrier serivce provider used within device. |
+| open_idfa | Identifier for Vendors for Open devices. |
+| network_technology | technology used by the network provider of the device. |
+| network_type | Type of network eg. `3G`. |
 </DbtDetails>
 
 <DbtDetails>
@@ -1849,7 +1855,9 @@ The sql to determine the correct limits for the run is generated by the `get_run
 </summary>
 
 #### Description
-{{ doc("table_base_screen_context") }}
+** This table only exists when working in a Redshift or Postgres warehouse. **
+
+This optional table provides extra context on an event level and brings in data surrounding the screen that the application is on, such as the screen's id, activity, and type.
 
 #### Details
 <DbtDetails>
@@ -1857,15 +1865,15 @@ The sql to determine the correct limits for the run is generated by the `get_run
 
 | Column Name | Description |
 |--------------|-------------|
-| root_id | {{ doc("col_root_id") }} |
-| root_tstamp | {{ doc("col_root_tstamp") }} |
-| screen_id | {{ doc("col_screen_id") }} |
-| screen_name | {{ doc("col_screen_name") }} |
-| screen_activity | {{ doc("col_screen_activity") }} |
-| screen_fragment | {{ doc("col_screen_fragment") }} |
-| screen_top_view_controller | {{ doc("col_screen_top_view_controller") }} |
-| screen_type | {{ doc("col_screen_type") }} |
-| screen_view_controller | {{ doc("col_screen_view_controller") }} |
+| root_id | The corresponding UUID used in the root table. |
+| root_tstamp | The timestamp for when this event was produced. |
+| screen_id | A UUID for each screen e.g. `738f1fbc-5298-46fa-9474-bc0a65f014ab`. |
+| screen_name | The name set for a specific screen, e.g. `DemoScreenName`. |
+| screen_activity | The name of the Activity element in the screen. |
+| screen_fragment | The name of the screen fragment (also known as an anchor). |
+| screen_top_view_controller | The name of the root view controller. |
+| screen_type | The type of screen that was viewed. |
+| screen_view_controller | The name of the view controller. |
 </DbtDetails>
 
 <DbtDetails>

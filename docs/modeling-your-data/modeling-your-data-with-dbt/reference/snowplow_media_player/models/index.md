@@ -1588,7 +1588,7 @@ where is_played
 </summary>
 
 #### Description
-{{ doc("table_session_stats") }}
+This table aggregates the pageview level interactions to show session level media stats.
 
 #### Details
 <DbtDetails>
@@ -1596,23 +1596,23 @@ where is_played
 
 | Column Name | Description |
 |--------------|-------------|
-| domain_sessionid | {{ doc("col_domain_sessionid") }} |
-| domain_userid | {{ doc("col_domain_userid") }} |
-| impressions | {{ doc("col_impressions") }} |
-| videos_played | {{ doc("col_videos_played") }} |
-| audio_played | {{ doc("col_audio_played") }} |
-| video_plays | {{ doc("col_video_plays") }} |
-| audio_plays | {{ doc("col_audio_plays") }} |
-| valid_video_plays | {{ doc("col_valid_video_plays") }} |
-| valid_audio_plays | {{ doc("col_valid_audio_plays") }} |
-| start_tstamp | {{ doc("col_start_tstamp") }} |
-| end_tstamp | {{ doc("col_end_tstamp") }} |
-| seeks | {{ doc("col_seeks") }} |
-| play_time_sec | {{ doc("col_play_time_sec") }} |
-| play_time_sec_muted | {{ doc("col_play_time_sec_muted") }} |
-| avg_play_time_sec | {{ doc("col_avg_play_time_sec") }} |
-| avg_percent_played | {{ doc("col_avg_percent_played") }} |
-| complete_plays | {{ doc("col_complete_plays") }} |
+| domain_sessionid | A visit / session UUID e.g. `c6ef3124-b53a-4b13-a233-0088f79dcbcb`. |
+| domain_userid | User ID set by Snowplow using 1st party cookie e.g. `bc2e92ec6c204a14`. |
+| impressions | The number of pageviews where a media content was rendered regardless of whether the media was actually played or not. |
+| videos_played | The distinct number of videos that were played during a session. |
+| audio_played | The distinct number of audio files that were played during a session. |
+| video_plays | The number of pageviews with video plays of any duration. |
+| audio_plays | The number of pageviews with audio plays of any duration. |
+| valid_video_plays | The sum of all video plays that exceed the limit set within the variable `snowplow__valid_play_sec`, it is defaulted to 30 seconds. |
+| valid_audio_plays | The sum of all audio plays that exceeded the limit set within the variable `snowplow__valid_play_sec`, it is defaulted to 30 seconds. |
+| start_tstamp | The `derived_tstamp` denoting the time when the event started. |
+| end_tstamp | The `derived_tstamp` denoting the time when the last media player event belonging to the specific level of aggregation (e.g.: page_view by media) started. |
+| seeks | The count of seek events within a certain aggregation level. The seek event occurs when a user moves/skips to a new position in the media content. |
+| play_time_sec | Estimated duration of play in seconds. It is calculated using the percent_progress events that are fired during play. In case such an event is fired, it is assumed that the total section of the media in between the previous and current percent_progress is played through, even if the user seeks to another point in time within the audio / video. The more often these events are tracked (e.g. every 5% of the media's length) the more accurate the calculation becomes. |
+| play_time_sec_muted | Calculated duration of muted play in seconds. It is based on the percent_progress event and whether the user played it on mute during this event or not. |
+| avg_play_time_sec | Estimated average duration of plays in seconds. |
+| avg_percent_played | Average of total play_time divided by the media duration. |
+| complete_plays | The number of plays where the total percentage played is bigger than or equal to the `snowplow__complete_play_rate`. Default is 0.99, meaning that 99% of the video being watched constitutes a complete play. |
 </DbtDetails>
 
 <DbtDetails>
@@ -1699,7 +1699,7 @@ from prep
 </summary>
 
 #### Description
-{{ doc("table_user_stats") }}
+This table aggregates the pageview level interactions to show user level media stats.
 
 #### Details
 <DbtDetails>
@@ -1707,18 +1707,18 @@ from prep
 
 | Column Name | Description |
 |--------------|-------------|
-| domain_userid | {{ doc("col_domain_userid") }} |
-| first_play | {{ doc("col_first_play") }} |
-| last_play | {{ doc("col_last_play") }} |
-| video_plays | {{ doc("col_video_plays") }} |
-| audio_plays | {{ doc("col_audio_plays") }} |
-| valid_video_plays | {{ doc("col_valid_video_plays") }} |
-| valid_audio_plays | {{ doc("col_valid_audio_plays") }} |
-| complete_plays | {{ doc("col_complete_plays") }} |
-| seeks | {{ doc("col_seeks") }} |
-| play_time_min | {{ doc("col_play_time_min") }} |
-| avg_session_play_time_min | {{ doc("col_avg_session_play_time_min") }} |
-| avg_percent_played | {{ doc("col_avg_percent_played") }} |
+| domain_userid | User ID set by Snowplow using 1st party cookie e.g. `bc2e92ec6c204a14`. |
+| first_play | The `derived_tstamp` of the beginning of the first play of a media element. |
+| last_play | The `derived_tstamp` of the beginning of the last play of a media element. |
+| video_plays | The number of pageviews with video plays of any duration. |
+| audio_plays | The number of pageviews with audio plays of any duration. |
+| valid_video_plays | The sum of all video plays that exceed the limit set within the variable `snowplow__valid_play_sec`, it is defaulted to 30 seconds. |
+| valid_audio_plays | The sum of all audio plays that exceeded the limit set within the variable `snowplow__valid_play_sec`, it is defaulted to 30 seconds. |
+| complete_plays | The number of plays where the total percentage played is bigger than or equal to the `snowplow__complete_play_rate`. Default is 0.99, meaning that 99% of the video being watched constitutes a complete play. |
+| seeks | The count of seek events within a certain aggregation level. The seek event occurs when a user moves/skips to a new position in the media content. |
+| play_time_min | Calculated duration of play in minutes. |
+| avg_session_play_time_min | Estimated average duration of plays in seconds within a session. |
+| avg_percent_played | Average of total play_time divided by the media duration. |
 </DbtDetails>
 
 <DbtDetails>
