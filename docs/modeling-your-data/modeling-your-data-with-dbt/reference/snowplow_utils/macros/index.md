@@ -30,17 +30,22 @@ This page is auto-generated from our dbt packages, some information may be incom
 Generates a `sql` filter for the values in `app_ids` applied on the `app_id` column.
 
 
+
 #### Arguments
 - `app_ids` *(list)*: List of app_ids to filter to include
 
 #### Returns
-`app_id in (...)` if any `app_ids` are provided, otherwise `true`
+
+`app_id in (...)` if any `app_ids` are provided, otherwise `true`.
+
 #### Usage
+
 ```sql
 app_id_filter(['web', 'mobile', 'news'])
--- returns app_id in ('web', 'mobile', 'news')
-```
 
+-- returns
+app_id in ('web', 'mobile', 'news')
+```
 
 
 #### Details
@@ -114,10 +119,10 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.return_limits_from_model](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.return_limits_from_model)
 - [macro.snowplow_utils.get_run_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.get_run_limits)
 - [macro.snowplow_utils.get_session_lookback_limit](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.get_session_lookback_limit)
 - [macro.snowplow_utils.return_base_new_event_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.return_base_new_event_limits)
+- [macro.snowplow_utils.return_limits_from_model](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.return_limits_from_model)
 
 </TabItem>
 </Tabs>
@@ -500,7 +505,7 @@ This macro does not currently have a description.
 ```jinja2
 {% macro get_cluster_by(bigquery_cols=none, snowflake_cols=none) %}
 
-  {%- do exceptions.warn("Warning: the `get_cluster_by` macro is deprecated and will be removed in a future version of the package, please use `get_value_by_target_type` instead.") -%}
+  {# {%- do exceptions.warn("Warning: the `get_cluster_by` macro is deprecated and will be removed in a future version of the package, please use `get_value_by_target_type` instead.") -%} #}
 
 
   {% if target.type == 'bigquery' %}
@@ -555,20 +560,41 @@ This macro does not currently have a description.
 </summary>
 
 #### Description
-Given a table or reference object, returns columns that start with the specified column_prefix.
+This macro returns an array of column objects within a relation that start with the given column prefix. This is useful when you have multiple versions of a column within a table and want to dynamically identify all versions.
+
 
 
 #### Arguments
-- `relation` *(relation)*: A table or `ref` type object to get the columns from.
-- `column_prefix` *(string)*: The prefix string to search for matching columns.
+- `relation` *(relation)*: A table or `ref` type object to get the columns from
+- `column_prefix` *(string)*: The prefix string to search for matching columns
 
 #### Returns
-A list of columns that match the prefix if there are any, otherwise a compilation error.
-#### Usage
-```sql get_columns_in_relation_by_column_prefix(ref('snowplow_web_base_events_this_run'), 'domain')
--- returns ['domain_sessionid', 'domain_userid', 'domain_sessionidx',...]
-```
 
+An array of (column objects)[https://docs.getdbt.com/reference/dbt-classes#column]. The name of each column can be accessed with the name property.
+
+#### Usage
+
+```sql
+get_columns_in_relation_by_column_prefix(ref('snowplow_web_base_events_this_run'), 'domain')
+
+-- returns
+['domain_sessionid', 'domain_userid', 'domain_sessionidx',...]
+
+{% set matched_columns = snowplow_utils.get_columns_in_relation_by_column_prefix(
+                    relation=ref('snowplow_web_base_events_this_run'),
+                    column_prefix='custom_context_1_0_'
+                    ) %}
+
+{% for column in matched_columns %}
+{{ column.name }}
+{% endfor %}
+
+# Renders to something like:
+'custom_context_1_0_1'
+'custom_context_1_0_2'
+'custom_context_1_0_3'
+
+```
 
 
 #### Details
@@ -850,8 +876,8 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.is_run_with_new_events](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.is_run_with_new_events)
 - [macro.snowplow_utils.snowplow_incremental_post_hook](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.snowplow_incremental_post_hook)
+- [macro.snowplow_utils.is_run_with_new_events](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.is_run_with_new_events)
 
 </TabItem>
 </Tabs>
@@ -1120,10 +1146,9 @@ This macro does not currently have a description.
 <summary>Code <a href="https://github.com/snowplow/dbt-snowplow-utils/blob/main/macros/utils/get_partition_by.sql">(source)</a></summary>
 
 ```jinja2
-
 {%- macro get_partition_by(bigquery_partition_by=none, databricks_partition_by=none) -%}
 
-  {%- do exceptions.warn("Warning: the `get_partition_by` macro is deprecated and will be removed in a future version of the package, please use `get_value_by_target_type` instead.") -%}
+  {# {%- do exceptions.warn("Warning: the `get_partition_by` macro is deprecated and will be removed in a future version of the package, please use `get_value_by_target_type` instead.") -%} #}
 
   {% if target.type == 'bigquery' %}
     {{ return(bigquery_partition_by) }}
@@ -1325,13 +1350,14 @@ This macro does not currently have a description.
 #### Description
 Given a pattern, finds and returns all schemas that match that pattern. Note that for databricks any single character matches (`_`) will not be properly translated due to databricks using a regex expression instead of a SQL `like` clause.
 
+      
 
 #### Arguments
-- `schema_pattern` *(string)*: The pattern for the schema(s) you wish to find. For all non-databricks should be of the usual SQL `like` form. `%` will be automatically translated for databricks, but other special characters may not be.
+- `schema_pattern` *(string)*: The pattern for the schema(s) you wish to find. For all non-databricks should be of the usual SQL `like` form. `%` will be automatically translated for databricks, but other special characters may not be
 
 #### Returns
-A list of schemas that match the pattern provided.
 
+      A list of schemas that match the pattern provided.
 
 
 #### Details
@@ -1342,16 +1368,16 @@ A list of schemas that match the pattern provided.
 <TabItem value="raw" label="Raw" default>
 
 ```jinja2
-{% macro get_schemas_by_pattern(schema_pattern, database = target.database) %}
+{% macro get_schemas_by_pattern(schema_pattern) %}
     {{ return(adapter.dispatch('get_schemas_by_pattern', 'snowplow_utils')
-        (schema_pattern, table_pattern)) }}
+        (schema_pattern)) }}
 {% endmacro %}
 ```
 </TabItem>
 <TabItem value="databricks" label="databricks">
 
 ```jinja2
-{% macro databricks__get_schemas_by_pattern(schema_pattern, database = target.database) %}
+{% macro databricks__get_schemas_by_pattern(schema_pattern) %}
     {# databricks uses a regex on SHOW SCHEMAS and doesn't have an information schema in hive_metastore #}
     {%- set schema_pattern= dbt.replace(schema_pattern, "%", "*") -%}
 
@@ -1361,7 +1387,7 @@ A list of schemas that match the pattern provided.
     {%- endset -%}
 
     {% set results = run_query(get_schemas_sql) %}
-    {% set schemas = results.columns[0].values() %}
+    {% set schemas = results|map(attribute='databaseName')|unique|list %}
 
     {{ return(schemas) }}
 
@@ -1371,16 +1397,11 @@ A list of schemas that match the pattern provided.
 <TabItem value="default" label="default">
 
 ```jinja2
-{% macro default__get_schemas_by_pattern(schema_pattern, database = target.database) %}
+{% macro default__get_schemas_by_pattern(schema_pattern) %}
 
-    {% set get_tables_sql =
-    "select distinct
-            schema_name as {{ adapter.quote('schema_name') }}
-        from {{ database }}.information_schema.schemata
-        where schema_name ilike '{{ schema_pattern }}'"
-    %}
-    {% set results = run_query(get_tables_sql) %}
-    {% set schemas = results.columns[0].values() %}
+    {% set get_tables_sql = dbt_utils.get_tables_by_pattern_sql(schema_pattern, table_pattern='%') %}
+    {% set results = [] if get_tables_sql.isspace() else run_query(get_tables_sql) %}
+    {% set schemas = results|map(attribute='table_schema')|unique|list %}
     {{ return(schemas) }}
 
 {% endmacro %}
@@ -1391,8 +1412,8 @@ A list of schemas that match the pattern provided.
 ```jinja2
 
 
-{%- macro spark__get_schemas_by_pattern(schema_pattern, database = target.database) -%}
-    {{ return(snowplow_utils.databricks__get_schemas_by_pattern(schema_pattern, database = target.database)) }}
+{%- macro spark__get_schemas_by_pattern(schema_pattern) -%}
+    {{ return(snowplow_utils.databricks__get_schemas_by_pattern(schema_pattern)) }}
 {%- endmacro %}
 ```
 </TabItem>
@@ -1403,8 +1424,8 @@ A list of schemas that match the pattern provided.
 
 #### Depends On
 - macro.dbt.run_query
-- macro.dbt.replace
 - macro.dbt_utils.get_tables_by_pattern_sql
+- macro.dbt.replace
 
 
 #### Referenced By
@@ -1886,17 +1907,30 @@ This macro does not currently have a description.
 </summary>
 
 #### Description
-Returns a value based on if the target is the development environment or not. Useful for when you want different behaviour in development to prod.
+This macro is designed to dynamically return values based on the target (`target.name`) you are running against. Your target names are defined in your [profiles.yml](https://docs.getdbt.com/reference/profiles.yml) file. This can be useful for dynamically changing variables within your project, depending on whether you are running in dev or prod.
+
 
 
 #### Arguments
 - `dev_value`: Value to use if target is development
 - `default_value`: Value to use if target is not development
-- `dev_target_name` *(string)*: Name of the development target, default `dev`
+- `dev_target_name` *(string)*: (Optional) Name of the development target. Default `dev`
 
 #### Returns
+
 The value relevant to the target environment
 
+#### Usage
+
+```yml
+
+# dbt_project.yml
+...
+vars:
+snowplow_web:
+    snowplow__backfill_limit_days: "{{ snowplow_utils.get_value_by_target(dev_value=1, default_value=30, dev_target_name='dev') }}"
+
+```
 
 
 #### Details
@@ -1939,7 +1973,21 @@ The value relevant to the target environment
 </summary>
 
 #### Description
-This macro does not currently have a description.
+Returns the value provided based on the `target.type`. This is useful when you need a different value based on which warehouse is being used e.g. cluster fields or partition keys.
+
+
+
+#### Arguments
+- `bigquery_val` *(string)*: (Optional) Value to return if the `target.type` is bigquery. Default None
+- `snowflake_val` *(string)*: (Optional) Value to return if the `target.type` is snowflake. Default None
+- `redshift_val` *(string)*: (Optional) Value to return if the `target.type` is redshift. Default None
+- `postgres_val` *(string)*: (Optional) Value to return if the `target.type` is postgres. Default None
+- `databricks_val` *(string)*: (Optional) Value to return if the `target.type` is databricks. Default None
+
+#### Returns
+
+The appropriate value for the target warehouse type, or an error if not an expected target type.
+
 
 #### Details
 <DbtDetails>
@@ -1977,15 +2025,39 @@ This macro does not currently have a description.
 
 #### Description
 This macro is designed for use with Snowplow data modelling packages like `snowplow-web`. It can be used in any incremental models, to effectively block the incremental model from being updated with old data which it has already consumed. This saves cost as well as preventing historical data from being overwritten with partially complete data (due to a batch back-fill for instance).
-The macro utilizes the `snowplow_[platform]_incremental_manifest` table to determine whether the model from which the macro is called, i.e. ``, has already consumed the data in the given run. If it has, it returns `false`. If the data in the run contains new data, `true` is returned.
+
+The macro utilizes the `snowplow_[platform]_incremental_manifest` table to determine whether the model from which the macro is called, i.e. `{{ this }}`, has already consumed the data in the given run. If it has, it returns `false`. If the data in the run contains new data, `true` is returned.
+
 For the sessions lifecycle identifier it does not use the manifest as this table is not included in it.
+
 
 
 #### Arguments
 - `package_name` *(string)*: The modeling package name e.g. `snowplow-mobile`
 
 #### Returns
+
 `true` if the run contains new events previously not consumed by `this`, `false` otherwise.
+
+#### Usage
+
+```sql
+
+{{
+config(
+    materialized='snowplow_incremental',
+    unique_key='screen_view_id',
+    upsert_date_key='start_tstamp'
+)
+}}
+
+select
+...
+
+from {{ ref('snowplow_mobile_base_events_this_run' ) }}
+where {{ snowplow_utils.is_run_with_new_events('snowplow_mobile') }} --returns false if run doesn't contain new events.
+
+```
 
 
 #### Details
@@ -2100,7 +2172,7 @@ A wrapper macro for the `dbt_utils.pretty_log_format` using the `snowplow__has_l
 
 #### Arguments
 - `message` *(string)*: The string message to print.
-- `is_printed` *(boolean)*: Boolean value to determine if the log is also printed to the stdout.
+- `is_printed` *(boolean)*: Boolean value to determine if the log is also printed to the stdout
 
 #### Details
 <DbtDetails>
@@ -2714,7 +2786,26 @@ This macro does not currently have a description.
 </summary>
 
 #### Description
-This macro does not currently have a description.
+This macro takes the current timestamp and subtracts `n` units, as defined by the `timedelta_attribute`, from it. This is achieved using the Python datetime module, rather than querying your database. By combining this with the `get_value_by_target` macro, you can dynamically set dates depending on your environment.
+
+
+
+#### Arguments
+- `n` *(integer)*: The number of timedeltas to subtract from the current timestamp
+- `timedelta_attribute` *(string)*: The type of units to subtract. This can be any valid attribute of the [timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects) object
+
+#### Returns
+
+Current timestamp minus `n` units.
+
+#### Usage
+
+```sql
+
+{{ snowplow_utils.n_timedeltas_ago(1, 'weeks') }}
+
+```
+
 
 #### Details
 <DbtDetails>
@@ -2810,13 +2901,14 @@ This macro deletes all schemas that start with the specified `schema_pattern`, m
 Prints an array as a `seperator` separated quoted list.
 
 
+
 #### Arguments
-- `list` *(array)*: Array object to print the (quoted) items of.
-- `separator` *(string)*: The character(s) to separate the items by, default `,`.
+- `list` *(array)*: Array object to print the (quoted) items of
+- `separator` *(string)*: The character(s) to separate the items by, default `,`
 
 #### Returns
-Separated output of items in the list, quoted.
 
+Separated output of items in the list, quoted.
 
 
 #### Details
@@ -3067,14 +3159,15 @@ This macro does not currently have a description.
 Calculates and returns the minimum (lower) and maximum (upper) values of specified columns within the specified table. Useful to find ranges of a column within a table.
 
 
+
 #### Arguments
-- `model` *(relation)*: A string or `ref` type object to refer to a model or table to return limits from.
-- `lower_limit_col` *(string)*: The column to take the `min` of to get the lower limit.
-- `upper_limit_col` *(string)*: The column to take the `max` of to get the upper limit.
+- `model` *(relation)*: A string or `ref` type object to refer to a model or table to return limits from
+- `lower_limit_col` *(string)*: The column to take the `min` of to get the lower limit
+- `upper_limit_col` *(string)*: The column to take the `max` of to get the upper limit
 
 #### Returns
-A list of two objects, the lower and upper values from the columns in the model
 
+A list of two objects, the lower and upper values from the columns in the model
 
 
 #### Details
@@ -3141,15 +3234,24 @@ A list of two objects, the lower and upper values from the columns in the model
 </summary>
 
 #### Description
-Adds a query tag for Snowflake targets
+This macro takes a provided statement as argument and generates the SQL command to set this statement as the query_tag for Snowflake databases, and does nothing otherwise. It can be used to safely set the query_tag regardless of database type.
+
 
 
 #### Arguments
 - `statement` *(string)*: The statement to use as the `query_tag` within Snowflake
 
 #### Returns
+
 An alter session command set to the `query_tag` to the `statement` for Snowflake, otherwise nothing
 
+#### Usage
+
+```sql
+
+{{ snowplow_utils.set_query_tag('snowplow_query_tag') }}
+
+```
 
 
 #### Details
