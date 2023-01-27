@@ -1,6 +1,6 @@
 ---
 title: "Snowplow Normalize Models"
-description: Reference forsnowplow_normalize dbt models developed by Snowplow
+description: Reference for snowplow_normalize dbt models developed by Snowplow
 sidebar_position: 10
 ---
 
@@ -290,24 +290,14 @@ qualify row_number() over (partition by a.event_id order by a.collector_tstamp) 
 <TabItem value="model" label="Models" default>
 
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_normalize/models/index.md#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-- model.snowplow_normalize_integration_tests.snowplow_normalize_stg
 
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.return_base_new_event_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.return_base_new_event_limits)
-- [macro.snowplow_utils.timestamp_add](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.timestamp_add)
 - [macro.snowplow_utils.app_id_filter](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.app_id_filter)
+- [macro.snowplow_utils.return_base_new_event_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.return_base_new_event_limits)
 - [macro.snowplow_utils.set_query_tag](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.set_query_tag)
-
-</TabItem>
-</Tabs>
-
-#### Referenced By
-<Tabs groupId="reference">
-<TabItem value="model" label="Models" default>
-
-- model.snowplow_normalize_integration_tests.int_test_dummy_model
+- [macro.snowplow_utils.timestamp_add](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.timestamp_add)
 
 </TabItem>
 </Tabs>
@@ -380,11 +370,11 @@ This table contains the lower and upper timestamp limits for the given run of th
 </TabItem>
 <TabItem value="macros" label="Macros">
 
-- [macro.snowplow_utils.set_query_tag](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.set_query_tag)
 - [macro.snowplow_utils.get_enabled_snowplow_models](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.get_enabled_snowplow_models)
 - [macro.snowplow_utils.get_incremental_manifest_status](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.get_incremental_manifest_status)
 - [macro.snowplow_utils.get_run_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.get_run_limits)
 - [macro.snowplow_utils.print_run_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.print_run_limits)
+- [macro.snowplow_utils.set_query_tag](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.set_query_tag)
 
 </TabItem>
 </Tabs>
@@ -458,9 +448,9 @@ where false
 <Tabs groupId="reference">
 <TabItem value="macros" label="Macros">
 
+- macro.dbt.type_timestamp
 - [macro.snowplow_normalize.allow_refresh](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_normalize/macros/index.md#macro.snowplow_normalize.allow_refresh)
 - [macro.snowplow_utils.type_string](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_utils/macros/index.md#macro.snowplow_utils.type_string)
-- macro.dbt.type_timestamp
 
 </TabItem>
 </Tabs>
@@ -470,145 +460,6 @@ where false
 <TabItem value="model" label="Models" default>
 
 - [model.snowplow_normalize.snowplow_normalize_base_new_event_limits](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_normalize/models/index.md#model.snowplow_normalize.snowplow_normalize_base_new_event_limits)
-
-</TabItem>
-</Tabs>
-</DbtDetails>
-
-### Int Test Dummy Model {#model.snowplow_normalize_integration_tests.int_test_dummy_model}
-
-<DbtDetails><summary>
-<code>models/dummy_model/&lt;adaptor&gt;/int_test_dummy_model.sql</code>
-</summary>
-
-#### Description
-This model does not currently have a description.
-
-#### Details
-<DbtDetails>
-<summary>Code</summary>
-
-<Tabs groupId="dispatched_sql">
-<TabItem value="bigquery" label="bigquery" >
-
-<center><b><i><a href="https://github.com/snowplow/dbt-snowplow-normalize/blob/main/models/dummy_model/bigquery/int_test_dummy_model.sql">Source</a></i></b></center>
-
-```jinja2
-{{ config(
-    tags = "snowplow_normalize_incremental",
-) }}
-
-select 1 as dummy from {{ ref ('snowplow_normalize_base_events_this_run')}}
-```
-</TabItem>
-</Tabs>
-
-</DbtDetails>
-
-
-#### Depends On
-<Tabs groupId="reference">
-<TabItem value="model" label="Models" default>
-
-- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_normalize/models/index.md#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
-
-</TabItem>
-</Tabs>
-</DbtDetails>
-
-### Snowplow Normalize Stg {#model.snowplow_normalize_integration_tests.snowplow_normalize_stg}
-
-<DbtDetails><summary>
-<code>models/dummy_model/&lt;adaptor&gt;/snowplow_normalize_stg.sql</code>
-</summary>
-
-#### Description
-This model does not currently have a description.
-
-#### Details
-<DbtDetails>
-<summary>Code</summary>
-
-<Tabs groupId="dispatched_sql">
-<TabItem value="bigquery" label="bigquery" >
-
-<center><b><i><a href="https://github.com/snowplow/dbt-snowplow-normalize/blob/main/models/dummy_model/bigquery/snowplow_normalize_stg.sql">Source</a></i></b></center>
-
-```jinja2
-with prep as (
-select
-  *
-  except(contexts_test_1_0_0,contexts_test2_1_0_0,contexts_test2_1_0_1,contexts_test2_1_0_2,contexts_test2_1_0_3,contexts_test2_1_0_4,contexts_test2_1_0_5),
-  JSON_EXTRACT_ARRAY(contexts_test_1_0_0) AS contexts_test_1_0_0,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_0) AS contexts_test2_1_0_0,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_1) AS contexts_test2_1_0_1,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_2) AS contexts_test2_1_0_2,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_3) AS contexts_test2_1_0_3,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_4) AS contexts_test2_1_0_4,
-  JSON_EXTRACT_ARRAY(contexts_test2_1_0_5) AS contexts_test2_1_0_5
-
-from {{ ref('snowplow_norm_dummy_events') }}
-)
-
--- recreate repeated record field i.e. array of structs as is originally in BQ events table
-select
-  * except(unstruct_event_test_1_0_0,unstruct_event_test_1_0_1,unstruct_event_test2_1_0_0,unstruct_event_test2_1_0_1,contexts_test_1_0_0,contexts_test2_1_0_0,contexts_test2_1_0_1,contexts_test2_1_0_2,contexts_test2_1_0_3,contexts_test2_1_0_4,contexts_test2_1_0_5),
-    struct(JSON_EXTRACT_scalar(unstruct_event_test_1_0_0, '$.test_id') as test_id,JSON_EXTRACT_scalar(unstruct_event_test_1_0_0, '$.test_class') as test_class) as unstruct_event_test_1_0_0,
-    struct(JSON_EXTRACT_scalar(unstruct_event_test_1_0_1, '$.test_id') as test_id,JSON_EXTRACT_scalar(unstruct_event_test_1_0_1, '$.test_class') as test_class) as unstruct_event_test_1_0_1,
-    struct(JSON_EXTRACT_scalar(unstruct_event_test2_1_0_0, '$.test_word') as test_word,JSON_EXTRACT_scalar(unstruct_event_test2_1_0_0, '$.test_idea') as test_idea) as unstruct_event_test2_1_0_0,
-    struct(JSON_EXTRACT_scalar(unstruct_event_test2_1_0_1, '$.test_word') as test_word,JSON_EXTRACT_scalar(unstruct_event_test2_1_0_1, '$.test_idea') as test_idea) as unstruct_event_test2_1_0_1,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id') as context_test_id, JSON_EXTRACT_scalar(json_array,'$.context_test_class') as context_test_class)
-    from unnest(contexts_test_1_0_0) as json_array
-    ) as contexts_test_1_0_0,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_0) as json_array
-    ) as contexts_test2_1_0_0,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_1) as json_array
-    ) as contexts_test2_1_0_1,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_2) as json_array
-    ) as contexts_test2_1_0_2,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_3) as json_array
-    ) as contexts_test2_1_0_3,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_4) as json_array
-    ) as contexts_test2_1_0_4,
-    array(
-    select struct(JSON_EXTRACT_scalar(json_array,'$.context_test_id2') as context_test_id2, JSON_EXTRACT_scalar(json_array,'$.context_test_class2') as context_test_class2)
-    from unnest(contexts_test2_1_0_5) as json_array
-    ) as contexts_test2_1_0_5
-
-
-from prep
-```
-</TabItem>
-</Tabs>
-
-</DbtDetails>
-
-
-#### Depends On
-<Tabs groupId="reference">
-<TabItem value="model" label="Models" default>
-
-- seed.snowplow_normalize_integration_tests.snowplow_norm_dummy_events
-
-</TabItem>
-</Tabs>
-
-#### Referenced By
-<Tabs groupId="reference">
-<TabItem value="model" label="Models" default>
-
-- [model.snowplow_normalize.snowplow_normalize_base_events_this_run](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_normalize/models/index.md#model.snowplow_normalize.snowplow_normalize_base_events_this_run)
 
 </TabItem>
 </Tabs>

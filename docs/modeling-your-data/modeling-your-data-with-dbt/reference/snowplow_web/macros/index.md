@@ -100,8 +100,8 @@ This macro does not currently have a description.
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_base_quarantined_sessions](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_base_quarantined_sessions)
+- [model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_base_sessions_lifecycle_manifest)
 - [model.snowplow_web.snowplow_web_incremental_manifest](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_incremental_manifest)
 
 </TabItem>
@@ -177,17 +177,12 @@ This macro does not currently have a description.
 </DbtDetails>
 
 
-#### Depends On
-- [macro.snowplow_web.snowflake__filter_bots](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/macros/index.md#macro.snowplow_web.snowflake__filter_bots)
-- [macro.snowplow_web.redshift__filter_bots](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/macros/index.md#macro.snowplow_web.redshift__filter_bots)
-
-
 #### Referenced By
 <Tabs groupId="reference">
 <TabItem value="model" label="Models" default>
 
-- [model.snowplow_web.snowplow_web_page_views_this_run](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_page_views_this_run)
 - [model.snowplow_web.snowplow_web_page_view_events](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_page_view_events)
+- [model.snowplow_web.snowplow_web_page_views_this_run](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_page_views_this_run)
 
 </TabItem>
 </Tabs>
@@ -651,42 +646,6 @@ This macro does not currently have a description.
 <TabItem value="model" label="Models" default>
 
 - [model.snowplow_web.snowplow_web_page_views_this_run](/docs/modeling-your-data/modeling-your-data-with-dbt/reference/snowplow_web/models/index.md#model.snowplow_web.snowplow_web_page_views_this_run)
-
-</TabItem>
-</Tabs>
-</DbtDetails>
-
-### Edge Cases To Ignore {#macro.snowplow_web_integration_tests.edge_cases_to_ignore}
-
-<DbtDetails><summary>
-<code>macros/edge_cases_to_ignore.sql</code>
-</summary>
-
-#### Description
-This macro does not currently have a description.
-
-#### Details
-<DbtDetails>
-<summary>Code <a href="https://github.com/snowplow/dbt-snowplow-utils/blob/main/macros/edge_cases_to_ignore.sql">(source)</a></summary>
-
-```jinja2
-{% macro edge_cases_to_ignore() %}
-  user_id not in (
-    'stray page ping', -- Known unsolved issue https://github.com/snowplow/data-models/issues/92
-    'NULL domain_userid' -- Case when `domain_userid` is null but `domain_sessionid` is not null. Shouldn't happen. Will solve if it arises.
-    )
-{% endmacro %}
-```
-
-</DbtDetails>
-
-
-#### Referenced By
-<Tabs groupId="reference">
-<TabItem value="model" label="Models" default>
-
-- model.snowplow_web_integration_tests.snowplow_web_events_stg
-- model.snowplow_web_integration_tests.snowplow_web_page_view_context_stg
 
 </TabItem>
 </Tabs>
