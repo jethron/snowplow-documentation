@@ -64,7 +64,7 @@
   --ifm-toc-padding-horizontal: 20px;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --doc-sidebar-width: 330px !important;
-  --ifm-tabs-padding-vertical: 10px;
+  --ifm-tabs-padding-vertical: 7px;
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgb(102, 56, 184)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
 }
 
@@ -305,8 +305,32 @@ textarea {
   max-width: 100%;
 }
 
-.tabs-container {
-  border-left-style: solid;
-  border-left-width: 2px;
-  padding-left: 10px;
+/* .tabs-container:hover  {
+
+  border: 2px solid var(--ifm-color-primary);
+
+}
+
+.tabs-container  {
+  padding-left: 7px;
+  padding-right: 7px;
+  transition: 0.5s ease-in-out all;
+  border-radius: var(--ifm-alert-border-radius);
+  border: 2px solid transparent;
+
+} */
+
+
+.tabs-container:hover  {
+  border: 2px outset var(--ifm-color-primary);
+}
+
+.tabs-container  {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 14px;
+  padding-top: 7px;
+  border: 2px outset transparent;
+  border-radius: var(--ifm-alert-border-radius);
+  transition: 1.5s ease-in-out all;
 }
